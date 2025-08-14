@@ -1,0 +1,13 @@
+// src/app/layout/auth-layout/auth-layout.scss
+@use 'sass:color';
+@use '../../../assets/styles/abstracts/variables' as *;
+
+.auth-layout {
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+
+    // Ensure the auth content takes full height
+    display: flex;
+    flex-direction: column;
+}

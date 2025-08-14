@@ -1,8 +1,9 @@
+// src/app/layout/auth-layout/auth-layout.ts
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-auth-layout',
-  imports: [],
+  standalone: false,
   templateUrl: './auth-layout.html',
   styleUrl: './auth-layout.scss'
 })

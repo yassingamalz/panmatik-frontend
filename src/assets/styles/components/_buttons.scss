@@ -1,0 +1,169 @@
+// src/assets/styles/components/_buttons.scss
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    gap: 8px;
+    min-height: 48px;
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    &--primary {
+        background: $primary-blue;
+        color: $surface-white;
+
+        &:hover:not(:disabled) {
+            background: color.adjust($primary-blue, $lightness: -8%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba($primary-blue, 0.3);
+        }
+
+        &:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba($primary-blue, 0.3);
+        }
+    }
+
+    &--secondary {
+        background: $secondary-green;
+        color: $surface-white;
+
+        &:hover:not(:disabled) {
+            background: color.adjust($secondary-green, $lightness: -8%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba($secondary-green, 0.3);
+        }
+    }
+
+    &--outline {
+        background: transparent;
+        color: $primary-blue;
+        border: 2px solid $primary-blue;
+
+        &:hover:not(:disabled) {
+            background: $primary-blue;
+            color: $surface-white;
+        }
+    }
+
+    &--danger {
+        background: $security-danger;
+        color: $surface-white;
+
+        &:hover:not(:disabled) {
+            background: color.adjust($security-danger, $lightness: -8%);
+            box-shadow: 0 4px 12px rgba($security-danger, 0.3);
+        }
+    }
+
+    &--warning {
+        background: $security-warning;
+        color: $text-dark;
+
+        &:hover:not(:disabled) {
+            background: color.adjust($security-warning, $lightness: -8%);
+            box-shadow: 0 4px 12px rgba($security-warning, 0.3);
+        }
+    }
+
+    &--small {
+        padding: 8px 16px;
+        font-size: 14px;
+        min-height: 36px;
+    }
+
+    &--large {
+        padding: 18px 32px;
+        font-size: 18px;
+        min-height: 56px;
+    }
+
+    &--full-width {
+        width: 100%;
+    }
+
+    &--loading {
+        pointer-events: none;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba($surface-white, 0.3);
+            border-top: 2px solid $surface-white;
+            border-radius: 50%;
+            animation: btn-spin 1s linear infinite;
+        }
+    }
+}
+
+@keyframes btn-spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+// Control-style buttons for industrial applications
+.btn-control {
+    @extend .btn;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid transparent;
+
+    &--start {
+        background: $secondary-green;
+        border-color: color.adjust($secondary-green, $lightness: -10%);
+
+        &:hover:not(:disabled) {
+            background: color.adjust($secondary-green, $lightness: -5%);
+            border-color: color.adjust($secondary-green, $lightness: -15%);
+        }
+    }
+
+    &--stop {
+        background: $security-danger;
+        border-color: color.adjust($security-danger, $lightness: -10%);
+
+        &:hover:not(:disabled) {
+            background: color.adjust($security-danger, $lightness: -5%);
+            border-color: color.adjust($security-danger, $lightness: -15%);
+        }
+    }
+
+    &--reset {
+        background: $security-warning;
+        color: $text-dark;
+        border-color: color.adjust($security-warning, $lightness: -10%);
+
+        &:hover:not(:disabled) {
+            background: color.adjust($security-warning, $lightness: -5%);
+            border-color: color.adjust($security-warning, $lightness: -15%);
+        }
+    }
+}

@@ -1,0 +1,79 @@
+// src/assets/styles/abstracts/_variables.scss
+
+// Primary Theme (NovaVista Standard)
+$primary-blue: #2563eb;
+$secondary-green: #059669;
+$accent-orange: #ea580c;
+$neutral-gray: #6b7280;
+$background-light: #f8fafc;
+$surface-white: #ffffff;
+$text-dark: #1f2937;
+$text-medium: #4b5563;
+
+// Logging UI Colors
+$log-success: #10b981;
+$log-error: #ef4444;
+$log-warning: #f59e0b;
+$log-info: #3b82f6;
+$log-background: #f9fafb;
+
+// Security & Status Colors
+$security-safe: #22c55e;
+$security-warning: #eab308;
+$security-danger: #ef4444;
+$status-online: #10b981;
+$status-offline: #6b7280;
+$status-maintenance: #f59e0b;
+
+// Monitoring Colors
+$metric-excellent: #22c55e;
+$metric-good: #84cc16;
+$metric-warning: #f59e0b;
+$metric-critical: #ef4444;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius-md: 6px;
+$border-radius-lg: 8px;
+$border-radius-xl: 12px;
+$border-radius-2xl: 16px;
+
+// Shadows
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// Typography
+$font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+$font-family-mono: 'Courier New', monospace;
+
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 30px;
+$font-size-4xl: 36px;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;

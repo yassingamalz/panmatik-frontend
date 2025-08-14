@@ -1,1 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+// src/styles.scss
+
+// Forward variables and mixins to make them globally available
+@forward 'assets/styles/abstracts/variables';
+@forward 'assets/styles/abstracts/mixins';
+
+// Import base styles
+@use 'assets/styles/base/reset';
+@use 'assets/styles/base/typography';
+@use 'assets/styles/base/animations';
+@use 'assets/styles/base/utilities';
+
+// Import component styles
+@use 'assets/styles/components/buttons';
+@use 'assets/styles/components/forms';
+
+// Import variables for this file
+@use 'assets/styles/abstracts/variables' as *;
+
+// Global application styles
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-family-sans;
+    color: $text-dark;
+    background: $background-light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// Remove focus outline for mouse users but keep for keyboard users
+.js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

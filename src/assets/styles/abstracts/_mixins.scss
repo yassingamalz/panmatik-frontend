@@ -1,0 +1,164 @@
+// src/assets/styles/abstracts/_mixins.scss
+
+// Media query mixins
+@mixin mobile {
+    @media (max-width: #{$breakpoint-sm - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$breakpoint-sm}) and (max-width: #{$breakpoint-lg - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$breakpoint-lg}) {
+        @content;
+    }
+}
+
+@mixin min-width($width) {
+    @media (min-width: $width) {
+        @content;
+    }
+}
+
+@mixin max-width($width) {
+    @media (max-width: $width) {
+        @content;
+    }
+}
+
+// Flexbox mixins
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+// Button mixins
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-md $spacing-lg;
+    border: none;
+    border-radius: $border-radius-lg;
+    font-weight: $font-weight-semibold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    gap: $spacing-sm;
+}
+
+@mixin button-hover($color) {
+    &:hover:not(:disabled) {
+        background: darken($color, 8%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba($color, 0.3);
+    }
+}
+
+// Card mixins
+@mixin card {
+    background: $surface-white;
+    border-radius: $border-radius-xl;
+    box-shadow: $shadow-md;
+    padding: $spacing-xl;
+}
+
+@mixin card-hover {
+    transition: all 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-lg;
+    }
+}
+
+// Form mixins
+@mixin input-base {
+    width: 100%;
+    padding: $spacing-md;
+    border: 2px solid lighten($neutral-gray, 25%);
+    border-radius: $border-radius-md;
+    font-size: $font-size-base;
+    color: $text-dark;
+    background: $surface-white;
+    transition: all 0.2s ease;
+
+    &:focus {
+        outline: none;
+        border-color: $primary-blue;
+        box-shadow: 0 0 0 3px rgba($primary-blue, 0.1);
+    }
+}
+
+@mixin input-error {
+    border-color: $security-danger;
+
+    &:focus {
+        border-color: $security-danger;
+        box-shadow: 0 0 0 3px rgba($security-danger, 0.1);
+    }
+}
+
+// Utility mixins
+@mixin visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@mixin truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin clearfix {
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+// Loading spinner mixin
+@mixin spinner($size: 20px, $color: $surface-white, $border-width: 2px) {
+    width: $size;
+    height: $size;
+    border: $border-width solid rgba($color, 0.3);
+    border-top: $border-width solid $color;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
