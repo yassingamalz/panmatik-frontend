@@ -21,6 +21,11 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/styles/abstracts"
+              ]
+            },
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"

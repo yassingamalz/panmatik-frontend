@@ -1,0 +1,196 @@
+<div class="login-container">
+    <!-- Left Panel - Geometric Background -->
+    <div class="login-left-panel">
+        <!-- Geometric Shapes SVG -->
+        <svg class="geometric-background" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00ACCB" stop-opacity="0.3" />
+                    <stop offset="100%" stop-color="#67E470" stop-opacity="0.2" />
+                </linearGradient>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FDA900" stop-opacity="0.2" />
+                    <stop offset="100%" stop-color="#6366f1" stop-opacity="0.3" />
+                </linearGradient>
+            </defs>
+
+            <!-- Geometric shapes -->
+            <polygon points="0,0 200,100 0,200" fill="url(#grad1)" />
+            <polygon points="400,200 200,300 400,400" fill="url(#grad1)" />
+            <polygon points="100,500 300,400 200,600" fill="url(#grad2)" />
+            <circle cx="320" cy="80" r="40" fill="url(#grad2)" />
+            <circle cx="80" cy="350" r="30" fill="url(#grad1)" />
+        </svg>
+
+        <!-- Content -->
+        <div class="left-panel-content">
+            <!-- Logo and Title -->
+            <div class="brand-section">
+                <div class="brand-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#00ACCB" />
+                        <path d="M2 17l10 5 10-5" stroke="#00ACCB" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M2 12l10 5 10-5" stroke="#00ACCB" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <h1 class="brand-title">
+                    Industrial<br />
+                    Intelligence<br />
+                    <span class="brand-highlight">Simplified</span>
+                </h1>
+
+                <p class="brand-description">
+                    Transform your manufacturing operations with PANMATIK's intelligent automation platform.
+                </p>
+            </div>
+
+            <!-- Statistics Grid -->
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value stat-success">98%</div>
+                    <div class="stat-label">Efficiency Gain</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value stat-warning">45%</div>
+                    <div class="stat-label">Cost Reduction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value stat-secondary">500+</div>
+                    <div class="stat-label">Global Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Support</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Panel - Login Form -->
+    <div class="login-right-panel">
+        <div class="login-form-container">
+            <!-- Mobile Logo -->
+            <div class="mobile-brand">
+                <div class="mobile-brand-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#002046" />
+                        <path d="M2 17l10 5 10-5" stroke="#002046" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M2 12l10 5 10-5" stroke="#002046" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <h1 class="mobile-brand-title">PANMATIK</h1>
+            </div>
+
+            <!-- Form Header -->
+            <div class="form-header">
+                <h2 class="form-title">Welcome Back</h2>
+                <p class="form-subtitle">Enter your credentials to continue</p>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" *ngIf="errorMessage">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                    <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2" />
+                    <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2" />
+                </svg>
+                {{ errorMessage }}
+            </div>
+
+            <!-- Login Form -->
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
+
+                <!-- Email Field -->
+                <div class="form-group" [class.has-error]="isFieldInvalid('email')">
+                    <input type="email" id="email" formControlName="email" class="form-control"
+                        [class.error]="isFieldInvalid('email')" placeholder="Email address" autocomplete="email">
+                    <div class="form-feedback form-feedback-error" *ngIf="isFieldInvalid('email')">
+                        {{ getFieldError('email') }}
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group" [class.has-error]="isFieldInvalid('password')">
+                    <div class="form-control-group">
+                        <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+                            class="form-control has-icon-right" [class.error]="isFieldInvalid('password')"
+                            placeholder="Password" autocomplete="current-password">
+                        <button type="button" class="form-icon-button form-icon-right"
+                            (click)="togglePasswordVisibility()"
+                            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+                            <svg *ngIf="!showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor"
+                                    stroke-width="2" />
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                            <svg *ngIf="showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+                                    stroke="currentColor" stroke-width="2" />
+                                <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="form-feedback form-feedback-error" *ngIf="isFieldInvalid('password')">
+                        {{ getFieldError('password') }}
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="form-options">
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="rememberMe" formControlName="rememberMe">
+                        <div class="form-check-indicator"></div>
+                        <label for="rememberMe" class="form-check-label">Remember me</label>
+                    </div>
+
+                    <a href="#" class="forgot-password-link">Forgot password?</a>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block" [class.btn-loading]="isLoading"
+                    [disabled]="isLoading">
+                    <span *ngIf="!isLoading">Sign In</span>
+                    <span *ngIf="isLoading">Signing In...</span>
+                </button>
+
+            </form>
+
+            <!-- Demo Credentials -->
+            <div class="demo-section">
+                <div class="demo-header">
+                    <span class="demo-title">Demo Credentials</span>
+                </div>
+                <div class="demo-buttons">
+                    <button type="button" class="btn btn-ghost btn-sm" (click)="fillDemoCredentials('admin')"
+                        [disabled]="isLoading">
+                        Admin User
+                    </button>
+                    <button type="button" class="btn btn-ghost btn-sm" (click)="fillDemoCredentials('operator')"
+                        [disabled]="isLoading">
+                        Operator User
+                    </button>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="form-footer">
+                <p class="copyright">
+                    © 2025 PANMATIK. Enterprise Industrial Control Platform.
+                </p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Terms</a>
+                    <a href="#" class="footer-link">Support</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

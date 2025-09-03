@@ -1,0 +1,67 @@
+// =============================================================================
+// PANMATIK Platform - App Component
+// Industrial ERP System by NovaVista
+// =============================================================================
+@import 'variables';
+@import 'functions';
+@import 'mixins'; 
+@import 'themes';
+
+// App component is just a router outlet container
+:host {
+    display: block;
+    min-height: 100vh;
+    background-color: theme-color('bg-primary');
+}
+
+// Global loading overlay (if needed in future)
+.app-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: theme-color('bg-primary');
+    @include flex-center;
+    z-index: 9999;
+
+    .loading-spinner {
+        @include spinner(32px, $primary);
+    }
+
+    .loading-text {
+        margin-top: $spacing-4;
+        font-size: $text-lg;
+        color: theme-color('text-secondary');
+    }
+}
+
+// Global error boundary styles (if needed)
+.app-error {
+    min-height: 100vh;
+    @include flex-center;
+    flex-direction: column;
+    padding: $spacing-8;
+    text-align: center;
+
+    .error-icon {
+        width: $spacing-16;
+        height: $spacing-16;
+        color: $error;
+        margin-bottom: $spacing-4;
+    }
+
+    .error-title {
+        font-size: $text-2xl;
+        font-weight: $font-bold;
+        color: theme-color('text-primary');
+        margin-bottom: $spacing-2;
+    }
+
+    .error-message {
+        font-size: $text-base;
+        color: theme-color('text-secondary');
+        max-width: 500px;
+        line-height: $leading-relaxed;
+    }
+}
