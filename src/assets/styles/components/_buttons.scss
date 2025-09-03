@@ -1,0 +1,710 @@
+// =============================================================================
+// PANMATIK Platform - Button Components
+// Industrial ERP System by NovaVista
+// =============================================================================
+
+// Add sass:color module for color adjustments
+@use 'sass:color';
+
+// -----------------------------------------------------------------------------
+// Base Button Class
+// -----------------------------------------------------------------------------
+.btn {
+    @include button-base;
+    @include button-md;
+
+    // Icon spacing
+    .btn-icon {
+        &:first-child {
+            margin-right: $spacing-2;
+        }
+
+        &:last-child {
+            margin-left: $spacing-2;
+        }
+
+        &:only-child {
+            margin: 0;
+        }
+    }
+
+    // Loading state
+    &.btn-loading {
+        position: relative;
+        color: transparent;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            border: 2px solid;
+            border-color: transparent;
+            border-top-color: currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+    }
+
+    // Block button
+    &.btn-block {
+        width: 100%;
+        display: flex;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Button Sizes
+// -----------------------------------------------------------------------------
+.btn-sm {
+    @include button-sm;
+
+    .btn-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    &.btn-loading::after {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+.btn-md {
+    @include button-md;
+
+    .btn-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    &.btn-loading::after {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.btn-lg {
+    @include button-lg;
+
+    .btn-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    &.btn-loading::after {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.btn-xl {
+    @include button-xl;
+
+    .btn-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    &.btn-loading::after {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Button Variants
+// -----------------------------------------------------------------------------
+
+// Primary button
+.btn-primary {
+    @include button-primary;
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $mark-white;
+    }
+}
+
+// Secondary button
+.btn-secondary {
+    @include button-secondary;
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $mark-white;
+    }
+}
+
+// Accent button
+.btn-accent {
+    background-color: $accent;
+    color: $mark-white;
+
+    &:hover:not(:disabled) {
+        background-color: $accent-dark;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba($accent, 0.3);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $mark-white;
+    }
+}
+
+// Success button
+.btn-success {
+    background-color: $success;
+    color: $mark-white;
+
+    &:hover:not(:disabled) {
+        background-color: $success-dark;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba($success, 0.3);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $mark-white;
+    }
+}
+
+// Warning button
+.btn-warning {
+    background-color: $warning;
+    color: $gray-900;
+
+    &:hover:not(:disabled) {
+        background-color: $warning-dark;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba($warning, 0.3);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $gray-900;
+    }
+}
+
+// Error/Danger button
+.btn-error {
+    background-color: $error;
+    color: $mark-white;
+
+    &:hover:not(:disabled) {
+        background-color: $error-dark;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba($error, 0.3);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $mark-white;
+    }
+}
+
+// Info button
+.btn-info {
+    background-color: $info;
+    color: $mark-white;
+
+    &:hover:not(:disabled) {
+        background-color: $info-dark;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba($info, 0.3);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $mark-white;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Outline Button Variants
+// -----------------------------------------------------------------------------
+.btn-outline {
+    @include button-outline;
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: currentColor;
+    }
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    border: 2px solid $primary;
+    color: $primary;
+
+    &:hover:not(:disabled) {
+        background-color: $primary;
+        color: $mark-white;
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $primary;
+    }
+}
+
+.btn-outline-secondary {
+    background-color: transparent;
+    border: 2px solid $secondary;
+    color: $secondary;
+
+    &:hover:not(:disabled) {
+        background-color: $secondary;
+        color: $mark-white;
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $secondary;
+    }
+}
+
+.btn-outline-success {
+    background-color: transparent;
+    border: 2px solid $success;
+    color: $success;
+
+    &:hover:not(:disabled) {
+        background-color: $success;
+        color: $mark-white;
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $success;
+    }
+}
+
+.btn-outline-warning {
+    background-color: transparent;
+    border: 2px solid $warning;
+    color: $warning;
+
+    &:hover:not(:disabled) {
+        background-color: $warning;
+        color: $gray-900;
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $warning;
+    }
+}
+
+.btn-outline-error {
+    background-color: transparent;
+    border: 2px solid $error;
+    color: $error;
+
+    &:hover:not(:disabled) {
+        background-color: $error;
+        color: $mark-white;
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $error;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Ghost Button Variants
+// -----------------------------------------------------------------------------
+.btn-ghost {
+    @include button-ghost;
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: currentColor;
+    }
+}
+
+.btn-ghost-primary {
+    background-color: transparent;
+    color: $primary;
+
+    &:hover:not(:disabled) {
+        background-color: rgba($primary, 0.1);
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $primary;
+    }
+}
+
+.btn-ghost-secondary {
+    background-color: transparent;
+    color: $secondary;
+
+    &:hover:not(:disabled) {
+        background-color: rgba($secondary, 0.1);
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $secondary;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Icon-Only Buttons
+// -----------------------------------------------------------------------------
+.btn-icon {
+    width: $button-height-md;
+    height: $button-height-md;
+    padding: 0;
+
+    &.btn-sm {
+        width: $button-height-sm;
+        height: $button-height-sm;
+    }
+
+    &.btn-lg {
+        width: $button-height-lg;
+        height: $button-height-lg;
+    }
+
+    &.btn-xl {
+        width: $button-height-xl;
+        height: $button-height-xl;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Button Groups
+// -----------------------------------------------------------------------------
+.btn-group {
+    display: inline-flex;
+    vertical-align: middle;
+
+    .btn {
+        position: relative;
+        border-radius: 0;
+
+        &:first-child {
+            border-top-left-radius: $radius-lg;
+            border-bottom-left-radius: $radius-lg;
+        }
+
+        &:last-child {
+            border-top-right-radius: $radius-lg;
+            border-bottom-right-radius: $radius-lg;
+        }
+
+        &:only-child {
+            border-radius: $radius-lg;
+        }
+
+        // Prevent double borders
+        &:not(:first-child) {
+            margin-left: -1px;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            z-index: 1;
+        }
+    }
+}
+
+.btn-group-vertical {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: middle;
+
+    .btn {
+        width: 100%;
+        border-radius: 0;
+
+        &:first-child {
+            border-top-left-radius: $radius-lg;
+            border-top-right-radius: $radius-lg;
+        }
+
+        &:last-child {
+            border-bottom-left-radius: $radius-lg;
+            border-bottom-right-radius: $radius-lg;
+        }
+
+        &:only-child {
+            border-radius: $radius-lg;
+        }
+
+        &:not(:first-child) {
+            margin-top: -1px;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            z-index: 1;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Industrial ERP Specific Buttons
+// -----------------------------------------------------------------------------
+
+// Machine control buttons
+.btn-machine-start {
+    @include button-primary;
+    background-color: $process-running;
+
+    &:hover:not(:disabled) {
+        background-color: color.adjust($process-running, $lightness: -10%);
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $mark-white;
+    }
+}
+
+.btn-machine-stop {
+    @include button-primary;
+    background-color: $process-stopped;
+
+    &:hover:not(:disabled) {
+        background-color: color.adjust($process-stopped, $lightness: -10%);
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $mark-white;
+    }
+}
+
+.btn-machine-pause {
+    @include button-primary;
+    background-color: $process-paused;
+    color: $gray-900;
+
+    &:hover:not(:disabled) {
+        background-color: color.adjust($process-paused, $lightness: -10%);
+    }
+
+    &.btn-loading::after {
+        border-color: transparent;
+        border-top-color: $gray-900;
+    }
+}
+
+// Status buttons
+.btn-status {
+    font-size: $text-xs;
+    font-weight: $font-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: $spacing-1 $spacing-3;
+    height: auto;
+    min-height: auto;
+
+    &.btn-status-online {
+        background-color: rgba($status-online, 0.1);
+        color: $status-online;
+        border: 1px solid rgba($status-online, 0.3);
+
+        &:hover:not(:disabled) {
+            background-color: rgba($status-online, 0.2);
+        }
+
+        &.btn-loading::after {
+            border-color: transparent;
+            border-top-color: $status-online;
+        }
+    }
+
+    &.btn-status-offline {
+        background-color: rgba($status-offline, 0.1);
+        color: $status-offline;
+        border: 1px solid rgba($status-offline, 0.3);
+
+        &:hover:not(:disabled) {
+            background-color: rgba($status-offline, 0.2);
+        }
+
+        &.btn-loading::after {
+            border-color: transparent;
+            border-top-color: $status-offline;
+        }
+    }
+
+    &.btn-status-warning {
+        background-color: rgba($status-warning, 0.1);
+        color: $status-warning;
+        border: 1px solid rgba($status-warning, 0.3);
+
+        &:hover:not(:disabled) {
+            background-color: rgba($status-warning, 0.2);
+        }
+
+        &.btn-loading::after {
+            border-color: transparent;
+            border-top-color: $status-warning;
+        }
+    }
+
+    &.btn-status-error {
+        background-color: rgba($status-error, 0.1);
+        color: $status-error;
+        border: 1px solid rgba($status-error, 0.3);
+
+        &:hover:not(:disabled) {
+            background-color: rgba($status-error, 0.2);
+        }
+
+        &.btn-loading::after {
+            border-color: transparent;
+            border-top-color: $status-error;
+        }
+    }
+}
+
+// Floating Action Button
+.btn-fab {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    padding: 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    bottom: $spacing-6;
+    right: $spacing-6;
+    z-index: $z-fixed;
+
+    &:hover:not(:disabled) {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+    }
+
+    &.btn-fab-sm {
+        width: 40px;
+        height: 40px;
+    }
+
+    &.btn-fab-lg {
+        width: 72px;
+        height: 72px;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Link Buttons
+// -----------------------------------------------------------------------------
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: $font-normal;
+    padding: 0;
+    height: auto;
+
+    &:hover:not(:disabled) {
+        color: var(--color-primary-dark);
+        background: none;
+        transform: none;
+        box-shadow: none;
+    }
+
+    &:focus {
+        outline: 2px solid theme-color('border-focus');
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Close Button
+// -----------------------------------------------------------------------------
+.btn-close {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    opacity: 0.5;
+    cursor: pointer;
+    border-radius: $radius-base;
+
+    &:hover {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus {
+        outline: 2px solid theme-color('border-focus');
+        outline-offset: 1px;
+    }
+
+    &::before {
+        content: '×';
+        font-size: 24px;
+        line-height: 1;
+        color: currentColor;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Toggle Button
+// -----------------------------------------------------------------------------
+.btn-toggle {
+    &[aria-pressed="true"] {
+        background-color: var(--color-primary);
+        color: $mark-white;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Responsive Button Utilities
+// -----------------------------------------------------------------------------
+@include mobile-only {
+    .btn-mobile-block {
+        width: 100%;
+        display: flex;
+    }
+
+    .btn-mobile-sm {
+        @include button-sm;
+    }
+}
+
+@include tablet-up {
+    .btn-tablet-inline {
+        width: auto;
+        display: inline-flex;
+    }
+}

@@ -1,0 +1,523 @@
+// =============================================================================
+// PANMATIK Platform - CSS Reset
+// Industrial ERP System by NovaVista
+// =============================================================================
+
+// Modern CSS Reset based on modern best practices
+// Credits: Andy Bell's Modern CSS Reset + additional industrial app considerations
+
+// -----------------------------------------------------------------------------
+// Box Sizing Reset
+// -----------------------------------------------------------------------------
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// -----------------------------------------------------------------------------
+// Remove Default Margins and Paddings
+// -----------------------------------------------------------------------------
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+// -----------------------------------------------------------------------------
+// HTML & Body Setup
+// -----------------------------------------------------------------------------
+html {
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+
+  // Prevent iOS text size adjust after orientation change
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: theme-color('bg-primary');
+  color: theme-color('text-primary');
+  line-height: 1.6;
+
+  // Prevent horizontal scroll on mobile
+  overflow-x: hidden;
+}
+
+// -----------------------------------------------------------------------------
+// Typography Reset
+// -----------------------------------------------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $font-semibold;
+  line-height: $leading-tight;
+  color: theme-color('text-primary');
+  margin-bottom: $spacing-4;
+}
+
+h1 {
+  font-size: $text-4xl;
+  font-weight: $font-bold;
+
+  @include mobile-only {
+    font-size: $text-3xl;
+  }
+}
+
+h2 {
+  font-size: $text-3xl;
+
+  @include mobile-only {
+    font-size: $text-2xl;
+  }
+}
+
+h3 {
+  font-size: $text-2xl;
+
+  @include mobile-only {
+    font-size: $text-xl;
+  }
+}
+
+h4 {
+  font-size: $text-xl;
+
+  @include mobile-only {
+    font-size: $text-lg;
+  }
+}
+
+h5 {
+  font-size: $text-lg;
+}
+
+h6 {
+  font-size: $text-base;
+  font-weight: $font-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+p {
+  margin-bottom: $spacing-4;
+  color: theme-color('text-secondary');
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// List Reset
+// -----------------------------------------------------------------------------
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Content lists (with proper styling)
+.content {
+  ul {
+    list-style-type: disc;
+    margin: $spacing-4 0;
+    padding-left: $spacing-6;
+
+    li {
+      margin-bottom: $spacing-2;
+      color: theme-color('text-secondary');
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin: $spacing-4 0;
+    padding-left: $spacing-6;
+
+    li {
+      margin-bottom: $spacing-2;
+      color: theme-color('text-secondary');
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Link Reset
+// -----------------------------------------------------------------------------
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 2px solid theme-color('border-focus');
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+
+  // Remove outline on mouse click but keep it for keyboard
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Button Reset
+// -----------------------------------------------------------------------------
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+
+  &:focus {
+    outline: 2px solid theme-color('border-focus');
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Form Elements Reset
+// -----------------------------------------------------------------------------
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Remove default styling from specific inputs
+input[type="search"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+// Remove default checkbox and radio styling
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+// Field sets
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  padding: 0;
+  margin-bottom: $spacing-4;
+  font-weight: $font-semibold;
+  color: theme-color('text-primary');
+}
+
+// -----------------------------------------------------------------------------
+// Media Elements Reset
+// -----------------------------------------------------------------------------
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  // Prevent images from breaking layout
+  max-width: 100%;
+  height: auto;
+
+  // Remove border on images inside links in IE 10
+  border-style: none;
+}
+
+svg {
+  // Ensure SVGs scale properly
+  fill: currentColor;
+}
+
+// -----------------------------------------------------------------------------
+// Table Reset
+// -----------------------------------------------------------------------------
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  border: none;
+  padding: 0;
+}
+
+th {
+  font-weight: $font-semibold;
+  color: theme-color('text-primary');
+}
+
+// -----------------------------------------------------------------------------
+// Code Elements Reset
+// -----------------------------------------------------------------------------
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+code {
+  padding: 0.125em 0.25em;
+  background-color: theme-color('bg-secondary');
+  border-radius: $radius-sm;
+  color: theme-color('text-primary');
+}
+
+pre {
+  background-color: theme-color('bg-secondary');
+  padding: $spacing-4;
+  border-radius: $radius-lg;
+  overflow-x: auto;
+  margin: $spacing-4 0;
+
+  code {
+    background: none;
+    padding: 0;
+  }
+}
+
+kbd {
+  padding: 0.125em 0.25em;
+  background-color: theme-color('text-primary');
+  color: theme-color('bg-primary');
+  border-radius: $radius-sm;
+  font-size: 0.8em;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+// -----------------------------------------------------------------------------
+// Horizontal Rule
+// -----------------------------------------------------------------------------
+hr {
+  border: none;
+  height: 1px;
+  background-color: theme-color('border-primary');
+  margin: $spacing-6 0;
+}
+
+// -----------------------------------------------------------------------------
+// Details & Summary
+// -----------------------------------------------------------------------------
+details {
+  margin-bottom: $spacing-4;
+
+  summary {
+    cursor: pointer;
+    padding: $spacing-2 0;
+    font-weight: $font-medium;
+    color: theme-color('text-primary');
+
+    &:focus {
+      outline: 2px solid theme-color('border-focus');
+      outline-offset: 2px;
+      border-radius: $radius-sm;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Blockquote
+// -----------------------------------------------------------------------------
+blockquote {
+  margin: $spacing-6 0;
+  padding: $spacing-4 $spacing-6;
+  border-left: 4px solid var(--color-primary);
+  background-color: theme-color('bg-secondary');
+  border-radius: 0 $radius-lg $radius-lg 0;
+
+  p {
+    margin-bottom: $spacing-2;
+    color: theme-color('text-primary');
+    font-style: italic;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  footer {
+    margin-top: $spacing-2;
+    font-size: $text-sm;
+    color: theme-color('text-tertiary');
+
+    &::before {
+      content: "— ";
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Selection Styling
+// -----------------------------------------------------------------------------
+::selection {
+  background-color: alpha(var(--color-primary), 0.2);
+  color: theme-color('text-primary');
+}
+
+::-moz-selection {
+  background-color: alpha(var(--color-primary), 0.2);
+  color: theme-color('text-primary');
+}
+
+// -----------------------------------------------------------------------------
+// Scrollbar Styling (Webkit)
+// -----------------------------------------------------------------------------
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: theme-color('bg-secondary');
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: theme-color('border-secondary');
+  border-radius: $radius-full;
+
+  &:hover {
+    background-color: alpha(var(--color-primary), 0.6);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Focus Management
+// -----------------------------------------------------------------------------
+
+// Enhanced focus styles for better accessibility
+:focus {
+  outline: 2px solid theme-color('border-focus');
+  outline-offset: 2px;
+}
+
+// Remove outline for mouse users but keep it for keyboard users
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Ensure focus is visible for keyboard navigation
+:focus-visible {
+  outline: 2px solid theme-color('border-focus');
+  outline-offset: 2px;
+}
+
+// -----------------------------------------------------------------------------
+// Print Styles Reset
+// -----------------------------------------------------------------------------
+@media print {
+
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  img {
+    page-break-inside: avoid;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+}

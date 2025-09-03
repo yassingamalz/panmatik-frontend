@@ -1,0 +1,104 @@
+// =============================================================================
+// PANMATIK Platform - Theme Definitions
+// Industrial ERP System by NovaVista
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Light Theme Variables
+// -----------------------------------------------------------------------------
+$light-theme: (
+  // Backgrounds
+  bg-primary: $mark-white,
+  bg-secondary: $gray-50,
+  bg-tertiary: $gray-100,
+  bg-elevated: $mark-white,
+  bg-overlay: rgba(255, 255, 255, 0.95),
+  
+  // Surfaces
+  surface: $mark-white,
+  surface-elevated: $mark-white,
+  surface-hover: $gray-50,
+  surface-pressed: $gray-100,
+  surface-disabled: $gray-100,
+  
+  // Text Colors
+  text-primary: $gray-900,
+  text-secondary: $gray-700,
+  text-tertiary: $gray-500,
+  text-disabled: $gray-400,
+  text-inverse: $mark-white,
+  text-on-primary: $mark-white,
+  text-on-secondary: $mark-white,
+  text-on-accent: $mark-white,
+  
+  // Borders
+  border-primary: $gray-200,
+  border-secondary: $gray-300,
+  border-focus: $mark-cyan,
+  border-error: $error,
+  border-success: $success,
+  border-warning: $warning,
+  
+  // Interactive States
+  interactive-hover: rgba($mark-cyan, 0.1),
+  interactive-pressed: rgba($mark-cyan, 0.2),
+  interactive-focus: rgba($mark-cyan, 0.15),
+  interactive-disabled: $gray-100,
+  
+  // Shadows
+  shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05),
+  shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+  shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+);
+
+// -----------------------------------------------------------------------------
+// Dark Theme Variables
+// -----------------------------------------------------------------------------
+$dark-theme: (
+  // Backgrounds
+  bg-primary: $gray-900,
+  bg-secondary: $gray-800,
+  bg-tertiary: $gray-700,
+  bg-elevated: $gray-800,
+  bg-overlay: rgba(15, 23, 42, 0.95),
+  
+  // Surfaces
+  surface: $gray-800,
+  surface-elevated: $gray-700,
+  surface-hover: $gray-700,
+  surface-pressed: $gray-600,
+  surface-disabled: $gray-800,
+  
+  // Text Colors
+  text-primary: $gray-100,
+  text-secondary: $gray-300,
+  text-tertiary: $gray-400,
+  text-disabled: $gray-600,
+  text-inverse: $gray-900,
+  text-on-primary: $mark-white,
+  text-on-secondary: $mark-white,
+  text-on-accent: $mark-white,
+  
+  // Borders
+  border-primary: $gray-700,
+  border-secondary: $gray-600,
+  border-focus: $mark-cyan,
+  border-error: $error,
+  border-success: $success,
+  border-warning: $warning,
+  
+  // Interactive States
+  interactive-hover: rgba($mark-cyan, 0.15),
+  interactive-pressed: rgba($mark-cyan, 0.25),
+  interactive-focus: rgba($mark-cyan, 0.2),
+  interactive-disabled: $gray-800,
+  
+  // Shadows
+  shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3),
+  shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4),
+  shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4),
+  shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4),
+  shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5),
+);

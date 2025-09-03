@@ -1,0 +1,666 @@
+// =============================================================================
+// PANMATIK Platform - Typography
+// Industrial ERP System by NovaVista
+// =============================================================================
+
+// Import Inter font from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+// -----------------------------------------------------------------------------
+// Typography Scale & Base Styles
+// -----------------------------------------------------------------------------
+
+// Root typography settings
+html {
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: $font-normal;
+  color: theme-color('text-primary');
+  background-color: theme-color('bg-primary');
+  line-height: $leading-normal;
+}
+
+// -----------------------------------------------------------------------------
+// Heading Styles
+// -----------------------------------------------------------------------------
+
+// Display headings (larger, for hero sections)
+.display-1 {
+  font-size: 4.5rem;
+  font-weight: $font-bold;
+  line-height: $leading-tight;
+  letter-spacing: -0.02em;
+  color: theme-color('text-primary');
+  margin-bottom: $spacing-6;
+  
+  @include mobile-only {
+    font-size: 3rem;
+  }
+}
+
+.display-2 {
+  font-size: 3.75rem;
+  font-weight: $font-bold;
+  line-height: $leading-tight;
+  letter-spacing: -0.02em;
+  color: theme-color('text-primary');
+  margin-bottom: $spacing-6;
+  
+  @include mobile-only {
+    font-size: 2.5rem;
+  }
+}
+
+.display-3 {
+  font-size: 3rem;
+  font-weight: $font-bold;
+  line-height: $leading-tight;
+  letter-spacing: -0.01em;
+  color: theme-color('text-primary');
+  margin-bottom: $spacing-5;
+  
+  @include mobile-only {
+    font-size: 2rem;
+  }
+}
+
+// Standard headings
+h1, .h1 {
+  font-size: $text-4xl;
+  font-weight: $font-bold;
+  line-height: $leading-tight;
+  letter-spacing: -0.01em;
+  color: theme-color('text-primary');
+  margin-bottom: $spacing-5;
+  
+  @include mobile-only {
+    font-size: $text-3xl;
+  }
+}
+
+h2, .h2 {
+  font-size: $text-3xl;
+  font-weight: $font-bold;
+  line-height: $leading-tight;
+  color: theme-color('text-primary');
+  margin-bottom: $spacing-4;
+  
+  @include mobile-only {
+    font-size: $text-2xl;
+  }
+}
+
+h3, .h3 {
+  font-size: $text-2xl;
+  font-weight: $font-semibold;
+  line-height: $leading-tight;
+  color: theme-color('text-primary');
+  margin-bottom: $spacing-4;
+  
+  @include mobile-only {
+    font-size: $text-xl;
+  }
+}
+
+h4, .h4 {
+  font-size: $text-xl;
+  font-weight: $font-semibold;
+  line-height: $leading-normal;
+  color: theme-color('text-primary');
+  margin-bottom: $spacing-3;
+  
+  @include mobile-only {
+    font-size: $text-lg;
+  }
+}
+
+h5, .h5 {
+  font-size: $text-lg;
+  font-weight: $font-semibold;
+  line-height: $leading-normal;
+  color: theme-color('text-primary');
+  margin-bottom: $spacing-3;
+}
+
+h6, .h6 {
+  font-size: $text-base;
+  font-weight: $font-bold;
+  line-height: $leading-normal;
+  color: theme-color('text-secondary');
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: $spacing-3;
+}
+
+// -----------------------------------------------------------------------------
+// Body Text Styles
+// -----------------------------------------------------------------------------
+
+// Paragraph styles
+p, .text-body {
+  font-size: $text-base;
+  font-weight: $font-normal;
+  line-height: $leading-relaxed;
+  color: theme-color('text-secondary');
+  margin-bottom: $spacing-4;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.text-large {
+  font-size: $text-lg;
+  line-height: $leading-relaxed;
+  color: theme-color('text-secondary');
+}
+
+.text-small {
+  font-size: $text-sm;
+  line-height: $leading-normal;
+  color: theme-color('text-secondary');
+}
+
+.text-xs {
+  font-size: $text-xs;
+  line-height: $leading-normal;
+  color: theme-color('text-tertiary');
+}
+
+// Lead paragraph
+.lead {
+  font-size: $text-lg;
+  font-weight: $font-normal;
+  line-height: $leading-relaxed;
+  color: theme-color('text-secondary');
+  margin-bottom: $spacing-6;
+}
+
+// Subtitle
+.subtitle {
+  font-size: $text-lg;
+  font-weight: $font-medium;
+  color: theme-color('text-tertiary');
+  margin-bottom: $spacing-4;
+}
+
+// -----------------------------------------------------------------------------
+// Text Colors
+// -----------------------------------------------------------------------------
+.text-primary {
+  color: theme-color('text-primary') !important;
+}
+
+.text-secondary {
+  color: theme-color('text-secondary') !important;
+}
+
+.text-tertiary {
+  color: theme-color('text-tertiary') !important;
+}
+
+.text-disabled {
+  color: theme-color('text-disabled') !important;
+}
+
+.text-inverse {
+  color: theme-color('text-inverse') !important;
+}
+
+// Brand colors
+.text-brand-primary {
+  color: var(--color-primary) !important;
+}
+
+.text-brand-secondary {
+  color: var(--color-secondary) !important;
+}
+
+.text-brand-accent {
+  color: var(--color-accent) !important;
+}
+
+// Semantic colors
+.text-success {
+  color: var(--color-success) !important;
+}
+
+.text-warning {
+  color: var(--color-warning) !important;
+}
+
+.text-error {
+  color: var(--color-error) !important;
+}
+
+.text-info {
+  color: var(--color-info) !important;
+}
+
+// Industrial status colors
+.text-status-online {
+  color: $status-online !important;
+}
+
+.text-status-offline {
+  color: $status-offline !important;
+}
+
+.text-status-error {
+  color: $status-error !important;
+}
+
+.text-status-warning {
+  color: $status-warning !important;
+}
+
+// -----------------------------------------------------------------------------
+// Font Weights
+// -----------------------------------------------------------------------------
+.font-light {
+  font-weight: $font-light !important;
+}
+
+.font-normal {
+  font-weight: $font-normal !important;
+}
+
+.font-medium {
+  font-weight: $font-medium !important;
+}
+
+.font-semibold {
+  font-weight: $font-semibold !important;
+}
+
+.font-bold {
+  font-weight: $font-bold !important;
+}
+
+.font-extrabold {
+  font-weight: $font-extrabold !important;
+}
+
+// -----------------------------------------------------------------------------
+// Font Families
+// -----------------------------------------------------------------------------
+.font-sans {
+  font-family: var(--font-sans) !important;
+}
+
+.font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+// -----------------------------------------------------------------------------
+// Text Alignment
+// -----------------------------------------------------------------------------
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-justify {
+  text-align: justify !important;
+}
+
+// Responsive text alignment
+@include mobile-only {
+  .text-mobile-left {
+    text-align: left !important;
+  }
+  
+  .text-mobile-center {
+    text-align: center !important;
+  }
+  
+  .text-mobile-right {
+    text-align: right !important;
+  }
+}
+
+@include tablet-up {
+  .text-tablet-left {
+    text-align: left !important;
+  }
+  
+  .text-tablet-center {
+    text-align: center !important;
+  }
+  
+  .text-tablet-right {
+    text-align: right !important;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Text Transforms
+// -----------------------------------------------------------------------------
+.text-uppercase {
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em;
+}
+
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+.text-normal-case {
+  text-transform: none !important;
+}
+
+// -----------------------------------------------------------------------------
+// Text Decoration
+// -----------------------------------------------------------------------------
+.text-underline {
+  text-decoration: underline !important;
+}
+
+.text-line-through {
+  text-decoration: line-through !important;
+}
+
+.text-no-underline {
+  text-decoration: none !important;
+}
+
+// -----------------------------------------------------------------------------
+// Line Height
+// -----------------------------------------------------------------------------
+.leading-tight {
+  line-height: $leading-tight !important;
+}
+
+.leading-normal {
+  line-height: $leading-normal !important;
+}
+
+.leading-relaxed {
+  line-height: $leading-relaxed !important;
+}
+
+.leading-loose {
+  line-height: $leading-loose !important;
+}
+
+// -----------------------------------------------------------------------------
+// Letter Spacing
+// -----------------------------------------------------------------------------
+.tracking-tight {
+  letter-spacing: -0.025em !important;
+}
+
+.tracking-normal {
+  letter-spacing: 0 !important;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em !important;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em !important;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em !important;
+}
+
+// -----------------------------------------------------------------------------
+// Text Utility Classes
+// -----------------------------------------------------------------------------
+.truncate {
+  @include truncate;
+}
+
+.line-clamp-1 {
+  @include line-clamp(1);
+}
+
+.line-clamp-2 {
+  @include line-clamp(2);
+}
+
+.line-clamp-3 {
+  @include line-clamp(3);
+}
+
+.line-clamp-4 {
+  @include line-clamp(4);
+}
+
+// Word breaking
+.break-words {
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+.break-all {
+  word-break: break-all !important;
+}
+
+.break-normal {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+// Whitespace
+.whitespace-normal {
+  white-space: normal !important;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap !important;
+}
+
+.whitespace-pre {
+  white-space: pre !important;
+}
+
+.whitespace-pre-line {
+  white-space: pre-line !important;
+}
+
+.whitespace-pre-wrap {
+  white-space: pre-wrap !important;
+}
+
+// -----------------------------------------------------------------------------
+// Industrial ERP Typography Components
+// -----------------------------------------------------------------------------
+
+// Page title with description
+.page-header {
+  margin-bottom: $spacing-8;
+  
+  .page-title {
+    font-size: $text-3xl;
+    font-weight: $font-bold;
+    color: theme-color('text-primary');
+    margin-bottom: $spacing-2;
+    
+    @include mobile-only {
+      font-size: $text-2xl;
+    }
+  }
+  
+  .page-description {
+    font-size: $text-lg;
+    color: theme-color('text-tertiary');
+    line-height: $leading-relaxed;
+  }
+}
+
+// Section heading
+.section-header {
+  margin-bottom: $spacing-6;
+  
+  .section-title {
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+    color: theme-color('text-primary');
+    margin-bottom: $spacing-1;
+  }
+  
+  .section-description {
+    font-size: $text-sm;
+    color: theme-color('text-tertiary');
+  }
+}
+
+// Metric/KPI text styles
+.metric-value {
+  font-size: $text-4xl;
+  font-weight: $font-bold;
+  line-height: $leading-tight;
+  font-variant-numeric: tabular-nums;
+  
+  @include mobile-only {
+    font-size: $text-3xl;
+  }
+}
+
+.metric-label {
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  color: theme-color('text-secondary');
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Status text
+.status-text {
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  font-variant-numeric: tabular-nums;
+}
+
+// Monospace for technical data
+.text-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9em;
+}
+
+// Table typography
+.table-header {
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  color: theme-color('text-secondary');
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table-cell {
+  font-size: $text-sm;
+  color: theme-color('text-primary');
+}
+
+// Badge/Tag typography
+.badge-text {
+  font-size: $text-xs;
+  font-weight: $font-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Code and technical content
+code,
+.code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: theme-color('bg-secondary');
+  padding: 0.125em 0.375em;
+  border-radius: $radius-sm;
+  color: var(--color-primary);
+}
+
+pre {
+  font-family: var(--font-mono);
+  background-color: theme-color('bg-secondary');
+  padding: $spacing-4;
+  border-radius: $radius-lg;
+  overflow-x: auto;
+  margin: $spacing-4 0;
+  border: 1px solid theme-color('border-primary');
+  
+  code {
+    background: none;
+    padding: 0;
+    color: theme-color('text-primary');
+  }
+}
+
+// Keyboard shortcuts
+kbd {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  padding: 0.125em 0.375em;
+  background-color: theme-color('text-primary');
+  color: theme-color('bg-primary');
+  border-radius: $radius-sm;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+// -----------------------------------------------------------------------------
+// Print Typography
+// -----------------------------------------------------------------------------
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black !important;
+  }
+  
+  h1, .h1 {
+    font-size: 24pt;
+  }
+  
+  h2, .h2 {
+    font-size: 20pt;
+  }
+  
+  h3, .h3 {
+    font-size: 18pt;
+  }
+  
+  h4, .h4 {
+    font-size: 16pt;
+  }
+  
+  h5, .h5 {
+    font-size: 14pt;
+  }
+  
+  h6, .h6 {
+    font-size: 12pt;
+  }
+  
+  p, .text-body {
+    font-size: 12pt;
+  }
+  
+  .text-small {
+    font-size: 10pt;
+  }
+}

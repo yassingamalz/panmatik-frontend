@@ -1,0 +1,808 @@
+// =============================================================================
+// PANMATIK Platform - Form Components
+// Industrial ERP System by NovaVista
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Form Base Styles
+// -----------------------------------------------------------------------------
+.form {
+    width: 100%;
+
+    // Form sections
+    .form-section {
+        margin-bottom: $spacing-8;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .form-section-title {
+        font-size: $text-lg;
+        font-weight: $font-semibold;
+        color: theme-color('text-primary');
+        margin-bottom: $spacing-4;
+        padding-bottom: $spacing-2;
+        border-bottom: 1px solid theme-color('border-primary');
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Form Groups
+// -----------------------------------------------------------------------------
+.form-group {
+    margin-bottom: $spacing-6;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    // Inline form group
+    &.form-group-inline {
+        display: flex;
+        align-items: center;
+        gap: $spacing-4;
+
+        .form-label {
+            margin-bottom: 0;
+            white-space: nowrap;
+            min-width: 120px;
+        }
+
+        .form-control {
+            flex: 1;
+        }
+    }
+
+    // Compact form group (less spacing)
+    &.form-group-compact {
+        margin-bottom: $spacing-4;
+    }
+}
+
+// Form grid for multiple columns
+.form-grid {
+    display: grid;
+    gap: $spacing-6;
+
+    &.form-grid-2 {
+        grid-template-columns: 1fr 1fr;
+
+        @include mobile-only {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &.form-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+
+        @include tablet-up {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include mobile-only {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Labels
+// -----------------------------------------------------------------------------
+.form-label {
+    display: block;
+    font-size: $text-sm;
+    font-weight: $font-semibold;
+    color: theme-color('text-primary');
+    margin-bottom: $spacing-2;
+    line-height: $leading-normal;
+
+    // Required indicator
+    &.required::after {
+        content: ' *';
+        color: $error;
+    }
+
+    // Optional indicator
+    &.optional::after {
+        content: ' (optional)';
+        color: theme-color('text-tertiary');
+        font-weight: $font-normal;
+    }
+}
+
+// Inline label (for checkboxes/radios)
+.form-label-inline {
+    display: flex;
+    align-items: center;
+    font-weight: $font-normal;
+    cursor: pointer;
+    margin-bottom: 0;
+
+    input {
+        margin-right: $spacing-2;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Form Controls
+// -----------------------------------------------------------------------------
+.form-control {
+    @include form-control;
+
+    // Sizes
+    &.form-control-sm {
+        @include form-control-sm;
+    }
+
+    &.form-control-lg {
+        @include form-control-lg;
+    }
+
+    // Full width
+    &.form-control-block {
+        width: 100%;
+    }
+}
+
+// Input with icon
+.form-control-group {
+    position: relative;
+
+    .form-control {
+        &.has-icon-left {
+            padding-left: $spacing-12;
+        }
+
+        &.has-icon-right {
+            padding-right: $spacing-12;
+        }
+    }
+
+    .form-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: theme-color('text-tertiary');
+        pointer-events: none;
+        width: 16px;
+        height: 16px;
+
+        &.form-icon-left {
+            left: $spacing-4;
+        }
+
+        &.form-icon-right {
+            right: $spacing-4;
+        }
+    }
+
+    // Clickable icon (like password toggle)
+    .form-icon-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: theme-color('text-tertiary');
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+        padding: 0;
+
+        &:hover {
+            color: theme-color('text-secondary');
+        }
+
+        &:focus {
+            outline: 2px solid theme-color('border-focus');
+            outline-offset: 2px;
+            border-radius: $radius-sm;
+        }
+
+        &.form-icon-right {
+            right: $spacing-4;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Textarea
+// -----------------------------------------------------------------------------
+.form-textarea {
+    @include form-control;
+    min-height: 100px;
+    resize: vertical;
+
+    &.form-textarea-sm {
+        min-height: 80px;
+        padding: $spacing-2 $spacing-3;
+        font-size: $text-sm;
+    }
+
+    &.form-textarea-lg {
+        min-height: 120px;
+        padding: $spacing-4 $spacing-6;
+        font-size: $text-lg;
+    }
+
+    // Fixed height (no resize)
+    &.form-textarea-fixed {
+        resize: none;
+    }
+
+    // Auto-growing textarea
+    &.form-textarea-auto {
+        resize: none;
+        overflow: hidden;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Select Dropdown
+// -----------------------------------------------------------------------------
+.form-select {
+    @include form-control;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right $spacing-3 center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    padding-right: $spacing-10;
+    cursor: pointer;
+
+    &:focus {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2300ACCB' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    }
+
+    &.form-select-sm {
+        @include form-control-sm;
+        background-size: 14px 14px;
+        padding-right: $spacing-8;
+    }
+
+    &.form-select-lg {
+        @include form-control-lg;
+        background-size: 18px 18px;
+        padding-right: $spacing-12;
+    }
+
+    // Multiple select
+    &[multiple] {
+        background-image: none;
+        padding-right: $spacing-4;
+        height: auto;
+        min-height: 120px;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Checkbox & Radio
+// -----------------------------------------------------------------------------
+.form-checkbox,
+.form-radio {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+
+        &:focus+.form-check-indicator {
+            outline: 2px solid theme-color('border-focus');
+            outline-offset: 2px;
+        }
+
+        &:checked+.form-check-indicator {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+
+            &::after {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        &:disabled+.form-check-indicator {
+            background-color: theme-color('surface-disabled');
+            border-color: theme-color('border-secondary');
+            cursor: not-allowed;
+        }
+    }
+
+    .form-check-indicator {
+        position: relative;
+        width: 18px;
+        height: 18px;
+        margin-right: $spacing-3;
+        border: 2px solid theme-color('border-secondary');
+        background-color: theme-color('surface');
+        transition: all $transition-base;
+
+        &::after {
+            content: '';
+            position: absolute;
+            opacity: 0;
+            transform: scale(0);
+            transition: all $transition-fast;
+        }
+    }
+
+    .form-check-label {
+        font-size: $text-sm;
+        color: theme-color('text-primary');
+        cursor: pointer;
+        line-height: $leading-normal;
+    }
+}
+
+// Checkbox specific styles
+.form-checkbox {
+    .form-check-indicator {
+        border-radius: $radius-sm;
+
+        &::after {
+            top: 1px;
+            left: 4px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg) scale(0);
+        }
+    }
+}
+
+// Radio specific styles
+.form-radio {
+    .form-check-indicator {
+        border-radius: 50%;
+
+        &::after {
+            top: 3px;
+            left: 3px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: white;
+            transform: scale(0);
+        }
+    }
+}
+
+// Checkbox/Radio sizes
+.form-checkbox-sm,
+.form-radio-sm {
+    .form-check-indicator {
+        width: 14px;
+        height: 14px;
+    }
+
+    .form-check-label {
+        font-size: $text-xs;
+    }
+}
+
+.form-checkbox-lg,
+.form-radio-lg {
+    .form-check-indicator {
+        width: 22px;
+        height: 22px;
+        margin-right: $spacing-4;
+    }
+
+    .form-check-label {
+        font-size: $text-base;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Switch Toggle
+// -----------------------------------------------------------------------------
+.form-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        cursor: pointer;
+
+        &:focus+.form-switch-slider {
+            outline: 2px solid theme-color('border-focus');
+            outline-offset: 2px;
+        }
+
+        &:checked+.form-switch-slider {
+            background-color: var(--color-primary);
+
+            &::before {
+                transform: translateX(20px);
+            }
+        }
+
+        &:disabled+.form-switch-slider {
+            background-color: theme-color('surface-disabled');
+            cursor: not-allowed;
+        }
+    }
+
+    .form-switch-slider {
+        position: relative;
+        width: 44px;
+        height: 24px;
+        background-color: theme-color('border-secondary');
+        border-radius: 12px;
+        margin-right: $spacing-3;
+        transition: background-color $transition-base;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            transition: transform $transition-base;
+        }
+    }
+
+    .form-switch-label {
+        font-size: $text-sm;
+        color: theme-color('text-primary');
+        cursor: pointer;
+    }
+}
+
+// Switch sizes
+.form-switch-sm {
+    .form-switch-slider {
+        width: 36px;
+        height: 20px;
+        border-radius: 10px;
+
+        &::before {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    input:checked+.form-switch-slider::before {
+        transform: translateX(16px);
+    }
+}
+
+.form-switch-lg {
+    .form-switch-slider {
+        width: 52px;
+        height: 28px;
+        border-radius: 14px;
+        margin-right: $spacing-4;
+
+        &::before {
+            top: 2px;
+            left: 2px;
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    input:checked+.form-switch-slider::before {
+        transform: translateX(24px);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// File Upload
+// -----------------------------------------------------------------------------
+.form-file {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    input[type="file"] {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+
+        &:focus+.form-file-label {
+            outline: 2px solid theme-color('border-focus');
+            outline-offset: 2px;
+        }
+    }
+
+    .form-file-label {
+        @include form-control;
+        cursor: pointer;
+        text-align: center;
+        background-color: theme-color('bg-secondary');
+        border: 2px dashed theme-color('border-secondary');
+        color: theme-color('text-tertiary');
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: $spacing-2;
+
+        &:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .form-file-icon {
+            width: 24px;
+            height: 24px;
+            opacity: 0.6;
+        }
+
+        .form-file-text {
+            font-size: $text-sm;
+
+            strong {
+                color: theme-color('text-secondary');
+            }
+        }
+
+        .form-file-hint {
+            font-size: $text-xs;
+            color: theme-color('text-tertiary');
+        }
+    }
+
+    // When file is selected
+    &.has-file .form-file-label {
+        background-color: rgba(var(--color-success), 0.05);
+        border-color: var(--color-success);
+        color: var(--color-success);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Form Validation States
+// -----------------------------------------------------------------------------
+.form-group {
+    &.has-success {
+
+        .form-control,
+        .form-select {
+            border-color: var(--color-success);
+
+            &:focus {
+                box-shadow: 0 0 0 3px rgba($success, 0.15);
+            }
+        }
+
+        .form-label {
+            color: var(--color-success);
+        }
+    }
+
+    &.has-warning {
+
+        .form-control,
+        .form-select {
+            border-color: var(--color-warning);
+
+            &:focus {
+                box-shadow: 0 0 0 3px rgba($warning, 0.15);
+            }
+        }
+
+        .form-label {
+            color: var(--color-warning);
+        }
+    }
+
+    &.has-error {
+
+        .form-control,
+        .form-select {
+            border-color: var(--color-error);
+
+            &:focus {
+                box-shadow: 0 0 0 3px rgba($error, 0.15);
+            }
+        }
+
+        .form-label {
+            color: var(--color-error);
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Help Text & Validation Messages
+// -----------------------------------------------------------------------------
+.form-help {
+    display: block;
+    margin-top: $spacing-1;
+    font-size: $text-xs;
+    color: theme-color('text-tertiary');
+    line-height: $leading-normal;
+}
+
+.form-feedback {
+    display: block;
+    margin-top: $spacing-1;
+    font-size: $text-xs;
+    line-height: $leading-normal;
+
+    &.form-feedback-success {
+        color: var(--color-success);
+    }
+
+    &.form-feedback-warning {
+        color: var(--color-warning);
+    }
+
+    &.form-feedback-error {
+        color: var(--color-error);
+    }
+
+    // Icon in feedback
+    .form-feedback-icon {
+        width: 12px;
+        height: 12px;
+        margin-right: $spacing-1;
+        vertical-align: middle;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Form Actions
+// -----------------------------------------------------------------------------
+.form-actions {
+    display: flex;
+    gap: $spacing-4;
+    margin-top: $spacing-8;
+    padding-top: $spacing-6;
+    border-top: 1px solid theme-color('border-primary');
+
+    &.form-actions-center {
+        justify-content: center;
+    }
+
+    &.form-actions-end {
+        justify-content: flex-end;
+    }
+
+    &.form-actions-between {
+        justify-content: space-between;
+    }
+
+    // Stack on mobile
+    @include mobile-only {
+        flex-direction: column;
+
+        .btn {
+            width: 100%;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Industrial ERP Form Components
+// -----------------------------------------------------------------------------
+
+// Machine ID input with validation
+.form-machine-id {
+    .form-control {
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+}
+
+// Numeric input for measurements
+.form-numeric {
+    .form-control {
+        font-family: var(--font-mono);
+        text-align: right;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        &[type=number] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+
+        }
+    }
+}
+
+// Status form group
+.form-status {
+    .form-control {
+        padding-left: $spacing-10;
+    }
+
+    .status-indicator {
+        position: absolute;
+        left: $spacing-4;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+
+        &.status-online {
+            background-color: $status-online;
+        }
+
+        &.status-offline {
+            background-color: $status-offline;
+        }
+
+        &.status-error {
+            background-color: $status-error;
+        }
+
+        &.status-warning {
+            background-color: $status-warning;
+        }
+    }
+}
+
+// Form fieldset for grouping
+.form-fieldset {
+    border: 1px solid theme-color('border-primary');
+    border-radius: $radius-xl;
+    padding: $spacing-6;
+    margin-bottom: $spacing-6;
+
+    .form-fieldset-legend {
+        font-size: $text-lg;
+        font-weight: $font-semibold;
+        color: theme-color('text-primary');
+        padding: 0 $spacing-3;
+        margin-bottom: $spacing-4;
+        background-color: theme-color('bg-primary');
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Responsive Form Utilities
+// -----------------------------------------------------------------------------
+@include mobile-only {
+    .form-mobile-stack {
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group-inline {
+            flex-direction: column;
+            align-items: stretch;
+
+            .form-label {
+                min-width: auto;
+                margin-bottom: $spacing-2;
+            }
+        }
+    }
+}
+
+// Disabled form
+.form-disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}

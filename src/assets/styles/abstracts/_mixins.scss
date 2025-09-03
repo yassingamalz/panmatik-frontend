@@ -1,0 +1,582 @@
+// =============================================================================
+// PANMATIK Platform - SCSS Mixins
+// Industrial ERP System by NovaVista
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Theme Mixins
+// -----------------------------------------------------------------------------
+
+// Theme-aware styles mixin
+@mixin theme-styles {
+    @content;
+
+    [data-theme="dark"] & {
+        @content;
+    }
+}
+
+// Apply theme colors
+@mixin theme-background($light-color, $dark-color: null) {
+    background-color: $light-color;
+
+    @if $dark-color {
+        [data-theme="dark"] & {
+            background-color: $dark-color;
+        }
+    }
+}
+
+@mixin theme-text($light-color, $dark-color: null) {
+    color: $light-color;
+
+    @if $dark-color {
+        [data-theme="dark"] & {
+            color: $dark-color;
+        }
+    }
+}
+
+// Theme-aware property mixin
+@mixin theme-property($property, $light-value, $dark-value: null) {
+    #{$property}: $light-value;
+
+    @if $dark-value {
+        [data-theme="dark"] & {
+            #{$property}: $dark-value;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Responsive Breakpoint Mixins
+// -----------------------------------------------------------------------------
+
+@mixin mobile-only {
+    @media (max-width: #{$breakpoint-sm - 1px}) {
+        @content;
+    }
+}
+
+@mixin mobile-up {
+    @media (min-width: #{$breakpoint-sm}) {
+        @content;
+    }
+}
+
+@mixin tablet-up {
+    @media (min-width: #{$breakpoint-md}) {
+        @content;
+    }
+}
+
+@mixin desktop-up {
+    @media (min-width: #{$breakpoint-lg}) {
+        @content;
+    }
+}
+
+@mixin large-desktop-up {
+    @media (min-width: #{$breakpoint-xl}) {
+        @content;
+    }
+}
+
+@mixin extra-large-desktop-up {
+    @media (min-width: #{$breakpoint-2xl}) {
+        @content;
+    }
+}
+
+// Custom breakpoint mixin
+@mixin breakpoint($size) {
+    @media (min-width: #{$size}) {
+        @content;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Button Mixins
+// -----------------------------------------------------------------------------
+
+// Base button styles
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: $radius-lg;
+    font-weight: $font-medium;
+    cursor: pointer;
+    transition: all $transition-base;
+    text-decoration: none;
+    font-family: inherit;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px theme-color('interactive-focus');
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+// Button size variants
+@mixin button-size($height, $padding-x, $font-size) {
+    height: $height;
+    padding: 0 $padding-x;
+    font-size: $font-size;
+}
+
+@mixin button-sm {
+    @include button-size($button-height-sm, $spacing-4, $text-sm);
+}
+
+@mixin button-md {
+    @include button-size($button-height-md, $spacing-6, $text-base);
+}
+
+@mixin button-lg {
+    @include button-size($button-height-lg, $spacing-8, $text-lg);
+}
+
+@mixin button-xl {
+    @include button-size($button-height-xl, $spacing-10, $text-xl);
+}
+
+// Button style variants
+@mixin button-primary {
+    background-color: $primary;
+    color: $mark-white;
+
+    &:hover:not(:disabled) {
+        background-color: $primary-dark;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba($primary, 0.3);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+    }
+}
+
+@mixin button-secondary {
+    background-color: $secondary;
+    color: $mark-white;
+
+    &:hover:not(:disabled) {
+        background-color: $secondary-dark;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba($secondary, 0.3);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+    }
+}
+
+@mixin button-outline {
+    background-color: transparent;
+    border: 2px solid theme-color('border-primary');
+    color: theme-color('text-primary');
+
+    &:hover:not(:disabled) {
+        border-color: $primary;
+        color: $primary;
+        background-color: theme-color('interactive-hover');
+    }
+}
+
+@mixin button-ghost {
+    background-color: transparent;
+    color: theme-color('text-secondary');
+
+    &:hover:not(:disabled) {
+        background-color: theme-color('interactive-hover');
+        color: theme-color('text-primary');
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Form Control Mixins
+// -----------------------------------------------------------------------------
+
+@mixin form-control {
+    width: 100%;
+    padding: $spacing-3 $spacing-4;
+    border: 2px solid theme-color('border-primary');
+    border-radius: $radius-lg;
+    background: theme-color('surface');
+    color: theme-color('text-primary');
+    font-size: $text-base;
+    font-family: inherit;
+    transition: all $transition-base;
+
+    &:focus {
+        outline: none;
+        border-color: theme-color('border-focus');
+        box-shadow: 0 0 0 3px theme-color('interactive-focus');
+    }
+
+    &::placeholder {
+        color: theme-color('text-tertiary');
+    }
+
+    &:disabled {
+        background: theme-color('surface-disabled');
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    &.error {
+        border-color: theme-color('border-error');
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgba($error, 0.15);
+        }
+    }
+
+    &.success {
+        border-color: theme-color('border-success');
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgba($success, 0.15);
+        }
+    }
+}
+
+@mixin form-control-sm {
+    @include form-control;
+    height: $input-height-sm;
+    padding: $spacing-2 $spacing-3;
+    font-size: $text-sm;
+}
+
+@mixin form-control-lg {
+    @include form-control;
+    height: $input-height-lg;
+    padding: $spacing-4 $spacing-6;
+    font-size: $text-lg;
+}
+
+// -----------------------------------------------------------------------------
+// Card Mixins
+// -----------------------------------------------------------------------------
+
+@mixin card($padding: $card-padding-md, $elevated: false) {
+    background: theme-color('surface');
+    border: 1px solid theme-color('border-primary');
+    border-radius: $radius-xl;
+    padding: $padding;
+
+    @if $elevated {
+        box-shadow: theme-color('shadow-lg');
+        border: none;
+    }
+
+    @else {
+        box-shadow: theme-color('shadow-base');
+    }
+}
+
+@mixin card-sm {
+    @include card($card-padding-sm);
+}
+
+@mixin card-lg {
+    @include card($card-padding-lg);
+}
+
+@mixin card-hover {
+    transition: all $transition-base;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: theme-color('shadow-lg');
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Status Indicator Mixins
+// -----------------------------------------------------------------------------
+
+@mixin status-indicator($color, $size: 8px) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background-color: $color;
+    display: inline-block;
+}
+
+@mixin status-online {
+    @include status-indicator($status-online);
+}
+
+@mixin status-offline {
+    @include status-indicator($status-offline);
+}
+
+@mixin status-error {
+    @include status-indicator($status-error);
+}
+
+@mixin status-warning {
+    @include status-indicator($status-warning);
+}
+
+// Pulsing animation for critical alerts
+@mixin status-pulse($color) {
+    @include status-indicator($color);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+// -----------------------------------------------------------------------------
+// Layout Mixins
+// -----------------------------------------------------------------------------
+
+// Flexbox utilities
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin flex-start {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+@mixin flex-end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+// Container mixin
+@mixin container($max-width: $breakpoint-xl) {
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 $spacing-4;
+
+    @include tablet-up {
+        padding: 0 $spacing-6;
+    }
+
+    @include desktop-up {
+        padding: 0 $spacing-8;
+    }
+}
+
+// Grid system
+@mixin grid($columns: 12, $gap: $spacing-6) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    gap: $gap;
+}
+
+// -----------------------------------------------------------------------------
+// Animation Mixins
+// -----------------------------------------------------------------------------
+
+@mixin fade-in($duration: $transition-base) {
+    animation: fadeIn $duration $ease-out;
+}
+
+@mixin slide-in-up($duration: $transition-base) {
+    animation: slideInUp $duration $ease-out;
+}
+
+@mixin slide-in-right($duration: $transition-base) {
+    animation: slideInRight $duration $ease-out;
+}
+
+// Loading spinner
+@mixin spinner($size: 20px, $color: $primary) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+
+    // Handle currentColor case
+    @if $color ==currentColor {
+        border: 2px solid;
+        border-color: transparent;
+        border-top-color: currentColor;
+    }
+
+    @else {
+        border: 2px solid rgba($color, 0.2);
+        border-top-color: $color;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Utility Mixins
+// -----------------------------------------------------------------------------
+
+// Visually hidden (accessible but not visible)
+@mixin visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+// Text truncation
+@mixin truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin line-clamp($lines: 2) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+// Aspect ratio
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: percentage($height / $width);
+    }
+
+    >* {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Industrial ERP Specific Mixins
+// -----------------------------------------------------------------------------
+
+// Machine status badge
+@mixin machine-status($status) {
+    padding: $spacing-1 $spacing-3;
+    border-radius: $radius-full;
+    font-size: $text-xs;
+    font-weight: $font-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    @if $status =='online' {
+        background-color: rgba($status-online, 0.1);
+        color: $status-online;
+        border: 1px solid rgba($status-online, 0.3);
+    }
+
+    @else if $status =='offline' {
+        background-color: rgba($status-offline, 0.1);
+        color: $status-offline;
+        border: 1px solid rgba($status-offline, 0.3);
+    }
+
+    @else if $status =='error' {
+        background-color: rgba($status-error, 0.1);
+        color: $status-error;
+        border: 1px solid rgba($status-error, 0.3);
+    }
+
+    @else if $status =='warning' {
+        background-color: rgba($status-warning, 0.1);
+        color: $status-warning;
+        border: 1px solid rgba($status-warning, 0.3);
+    }
+}
+
+// KPI card styling
+@mixin kpi-card {
+    @include card;
+    text-align: center;
+    padding: $spacing-6;
+
+    .kpi-value {
+        font-size: $text-3xl;
+        font-weight: $font-bold;
+        line-height: $leading-tight;
+        margin-bottom: $spacing-2;
+    }
+
+    .kpi-label {
+        font-size: $text-sm;
+        color: theme-color('text-secondary');
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: $font-medium;
+    }
+
+    .kpi-trend {
+        font-size: $text-xs;
+        margin-top: $spacing-1;
+
+        &.positive {
+            color: $success;
+        }
+
+        &.negative {
+            color: $error;
+        }
+    }
+}
+
+// Data table styling
+@mixin data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: theme-color('surface');
+    border-radius: $radius-xl;
+    overflow: hidden;
+    box-shadow: theme-color('shadow-base');
+
+    th {
+        background: theme-color('bg-secondary');
+        padding: $spacing-4 $spacing-6;
+        text-align: left;
+        font-weight: $font-semibold;
+        font-size: $text-sm;
+        color: theme-color('text-secondary');
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 1px solid theme-color('border-primary');
+    }
+
+    td {
+        padding: $spacing-4 $spacing-6;
+        border-bottom: 1px solid theme-color('border-primary');
+        color: theme-color('text-primary');
+    }
+
+    tr:hover {
+        background: theme-color('surface-hover');
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+}

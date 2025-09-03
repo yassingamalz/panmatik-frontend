@@ -1,0 +1,180 @@
+// =============================================================================
+// PANMATIK Platform - SCSS Functions
+// Industrial ERP System by NovaVista
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Theme Functions
+// -----------------------------------------------------------------------------
+
+// Theme color accessor function
+@function theme-color($key) {
+  @return var(--color-#{$key});
+}
+
+// Get brand color function
+@function brand-color($color) {
+  $brand-colors: (
+    'navy': $mark-navy,
+    'cyan': $mark-cyan,
+    'green': $mark-green,
+    'orange': $mark-orange,
+    'white': $mark-white,
+    'indigo': $mark-indigo,
+  );
+  
+  @return map-get($brand-colors, $color);
+}
+
+// -----------------------------------------------------------------------------
+// Utility Functions
+// -----------------------------------------------------------------------------
+
+// Convert pixels to rem
+@function rem($pixels, $base: 16px) {
+  @return #{$pixels / $base}rem;
+}
+
+// Convert pixels to em
+@function em($pixels, $base: 16px) {
+  @return #{$pixels / $base}em;
+}
+
+// Get spacing value
+@function spacing($key) {
+  $spacing-map: (
+    0: $spacing-0,
+    1: $spacing-1,
+    2: $spacing-2,
+    3: $spacing-3,
+    4: $spacing-4,
+    5: $spacing-5,
+    6: $spacing-6,
+    8: $spacing-8,
+    10: $spacing-10,
+    12: $spacing-12,
+    16: $spacing-16,
+    20: $spacing-20,
+    24: $spacing-24
+  );
+  @return map-get($spacing-map, $key);
+}
+
+// Get radius value
+@function radius($key) {
+  $radius-map: (
+    'none': $radius-none,
+    'sm': $radius-sm,
+    'base': $radius-base,
+    'md': $radius-md,
+    'lg': $radius-lg,
+    'xl': $radius-xl,
+    '2xl': $radius-2xl,
+    '3xl': $radius-3xl,
+    'full': $radius-full,
+  );
+  @return map-get($radius-map, $key);
+}
+
+// Get font size
+@function font-size($key) {
+  $font-size-map: (
+    'xs': $text-xs,
+    'sm': $text-sm,
+    'base': $text-base,
+    'lg': $text-lg,
+    'xl': $text-xl,
+    '2xl': $text-2xl,
+    '3xl': $text-3xl,
+    '4xl': $text-4xl,
+  );
+  @return map-get($font-size-map, $key);
+}
+
+// -----------------------------------------------------------------------------
+// Color Manipulation Functions
+// -----------------------------------------------------------------------------
+
+// Create alpha variant of a color
+@function alpha($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+// Get status color
+@function status-color($status) {
+  $status-colors: (
+    'online': $status-online,
+    'offline': $status-offline,
+    'error': $status-error,
+    'warning': $status-warning,
+    'maintenance': $status-maintenance,
+  );
+  @return map-get($status-colors, $status);
+}
+
+// Get process color
+@function process-color($process) {
+  $process-colors: (
+    'running': $process-running,
+    'idle': $process-idle,
+    'stopped': $process-stopped,
+    'paused': $process-paused,
+  );
+  @return map-get($process-colors, $process);
+}
+
+// Get quality color
+@function quality-color($quality) {
+  $quality-colors: (
+    'excellent': $quality-excellent,
+    'good': $quality-good,
+    'acceptable': $quality-acceptable,
+    'poor': $quality-poor,
+  );
+  @return map-get($quality-colors, $quality);
+}
+
+// Get alert color
+@function alert-color($level) {
+  $alert-colors: (
+    'critical': $alert-critical,
+    'high': $alert-high,
+    'medium': $alert-medium,
+    'low': $alert-low,
+    'info': $alert-info,
+  );
+  @return map-get($alert-colors, $level);
+}
+
+// Get chart color
+@function chart-color($index) {
+  $chart-colors: (
+    1: $chart-primary,
+    2: $chart-secondary,
+    3: $chart-tertiary,
+    4: $chart-quaternary,
+    5: $chart-quinary,
+  );
+  @return map-get($chart-colors, $index);
+}
+
+// -----------------------------------------------------------------------------
+// Layout Functions
+// -----------------------------------------------------------------------------
+
+// Calculate container width
+@function container-width($breakpoint) {
+  $container-widths: (
+    'sm': 100%,
+    'md': 100%,
+    'lg': 1024px,
+    'xl': 1280px,
+    '2xl': 1536px,
+  );
+  @return map-get($container-widths, $breakpoint);
+}
+
+// Calculate grid columns
+@function grid-width($columns, $total: 12) {
+  @return percentage($columns / $total);
+}

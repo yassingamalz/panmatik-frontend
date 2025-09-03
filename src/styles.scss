@@ -1,1 +1,550 @@
-/* You can add global styles to this file, and also import other style files */
+// =============================================================================
+// PANMATIK Platform - Main SCSS Entry Point
+// Industrial ERP System by NovaVista
+// =============================================================================
+
+// Import order is crucial for proper cascade and variable availability
+
+// -----------------------------------------------------------------------------
+// 1. Abstracts (No CSS output - variables, functions, mixins only)
+// -----------------------------------------------------------------------------
+@import 'assets/styles/abstracts/variables';
+@import 'assets/styles/abstracts/functions';
+@import 'assets/styles/abstracts/mixins';
+@import 'assets/styles/abstracts/themes';
+
+// -----------------------------------------------------------------------------
+// 2. Base Styles (Global element styles)
+// -----------------------------------------------------------------------------
+@import 'assets/styles/base/reset';
+@import 'assets/styles/base/typography';
+// @import 'base/base';
+
+// -----------------------------------------------------------------------------
+// 3. Layout Styles (Page structure)
+// -----------------------------------------------------------------------------
+// @import 'layout/grid';
+// @import 'layout/header';
+// @import 'layout/sidebar';
+// @import 'layout/footer';
+
+// -----------------------------------------------------------------------------
+// 4. Components (Reusable UI components)
+// -----------------------------------------------------------------------------
+@import 'assets/styles/components/buttons';
+@import 'assets/styles/components/forms';
+// @import 'components/cards';
+// @import 'components/navigation';
+// @import 'components/tables';
+// @import 'components/modals';
+// @import 'components/alerts';
+// @import 'components/badges';
+// @import 'components/tooltips';
+
+// -----------------------------------------------------------------------------
+// 5. Page Specific Styles
+// -----------------------------------------------------------------------------
+// @import 'pages/login';
+// @import 'pages/dashboard';
+// @import 'pages/machines';
+// @import 'pages/analytics';
+
+// -----------------------------------------------------------------------------
+// 6. Vendor Overrides (Third-party library customizations)
+// -----------------------------------------------------------------------------
+// @import 'vendors/bootstrap';
+// @import 'vendors/angular-material';
+
+// -----------------------------------------------------------------------------
+// CSS Custom Properties Setup (Theme Variables)
+// -----------------------------------------------------------------------------
+:root {
+    // Brand Colors (always available)
+    --color-primary: #{$primary};
+    --color-primary-light: #{$primary-light};
+    --color-primary-dark: #{$primary-dark};
+    --color-secondary: #{$secondary};
+    --color-secondary-light: #{$secondary-light};
+    --color-secondary-dark: #{$secondary-dark};
+    --color-accent: #{$accent};
+    --color-accent-light: #{$accent-light};
+    --color-accent-dark: #{$accent-dark};
+
+    // Semantic Colors
+    --color-success: #{$success};
+    --color-success-light: #{$success-light};
+    --color-success-dark: #{$success-dark};
+    --color-warning: #{$warning};
+    --color-warning-light: #{$warning-light};
+    --color-warning-dark: #{$warning-dark};
+    --color-error: #{$error};
+    --color-error-light: #{$error-light};
+    --color-error-dark: #{$error-dark};
+    --color-info: #{$info};
+    --color-info-light: #{$info-light};
+    --color-info-dark: #{$info-dark};
+
+    // Light theme as default
+    @each $key, $value in $light-theme {
+        --color-#{$key}: #{$value};
+    }
+
+    // Typography
+    --font-sans: #{$font-family-sans};
+    --font-mono: #{$font-family-mono};
+
+    // Spacing
+    --spacing-0: #{$spacing-0};
+    --spacing-1: #{$spacing-1};
+    --spacing-2: #{$spacing-2};
+    --spacing-3: #{$spacing-3};
+    --spacing-4: #{$spacing-4};
+    --spacing-5: #{$spacing-5};
+    --spacing-6: #{$spacing-6};
+    --spacing-8: #{$spacing-8};
+    --spacing-10: #{$spacing-10};
+    --spacing-12: #{$spacing-12};
+    --spacing-16: #{$spacing-16};
+    --spacing-20: #{$spacing-20};
+    --spacing-24: #{$spacing-24};
+
+    // Border Radius
+    --radius-none: #{$radius-none};
+    --radius-sm: #{$radius-sm};
+    --radius-base: #{$radius-base};
+    --radius-md: #{$radius-md};
+    --radius-lg: #{$radius-lg};
+    --radius-xl: #{$radius-xl};
+    --radius-2xl: #{$radius-2xl};
+    --radius-3xl: #{$radius-3xl};
+    --radius-full: #{$radius-full};
+
+    // Transitions
+    --transition-fast: #{$transition-fast};
+    --transition-base: #{$transition-base};
+    --transition-slow: #{$transition-slow};
+    --transition-slower: #{$transition-slower};
+}
+
+// Dark theme override
+[data-theme="dark"] {
+    @each $key, $value in $dark-theme {
+        --color-#{$key}: #{$value};
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Global Animation Keyframes
+// -----------------------------------------------------------------------------
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Global Base Styles
+// -----------------------------------------------------------------------------
+
+// Box-sizing reset
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+// Root font and theme setup
+html {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: theme-color('bg-primary');
+    color: theme-color('text-primary');
+    transition: background-color $transition-base, color $transition-base;
+}
+
+// Focus styles
+:focus {
+    outline: 2px solid theme-color('border-focus');
+    outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+// Selection styles
+::selection {
+    background-color: rgba($primary, 0.2);
+    color: theme-color('text-primary');
+}
+
+// Smooth transitions for theme switching
+* {
+    transition: background-color $transition-base,
+        border-color $transition-base,
+        color $transition-base,
+        box-shadow $transition-base;
+}
+
+// -----------------------------------------------------------------------------
+// Utility Classes
+// -----------------------------------------------------------------------------
+
+// Display utilities
+.d-none {
+    display: none !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.d-inline {
+    display: inline !important;
+}
+
+.d-inline-block {
+    display: inline-block !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.d-grid {
+    display: grid !important;
+}
+
+// Flex utilities
+.flex-center {
+    @include flex-center;
+}
+
+.flex-between {
+    @include flex-between;
+}
+
+.flex-start {
+    @include flex-start;
+}
+
+.flex-end {
+    @include flex-end;
+}
+
+// Text utilities
+.text-left {
+    text-align: left !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-primary {
+    color: theme-color('text-primary') !important;
+}
+
+.text-secondary {
+    color: theme-color('text-secondary') !important;
+}
+
+.text-tertiary {
+    color: theme-color('text-tertiary') !important;
+}
+
+.text-success {
+    color: var(--color-success) !important;
+}
+
+.text-warning {
+    color: var(--color-warning) !important;
+}
+
+.text-error {
+    color: var(--color-error) !important;
+}
+
+.text-info {
+    color: var(--color-info) !important;
+}
+
+// Font weight utilities
+.font-light {
+    font-weight: #{$font-light} !important;
+}
+
+.font-normal {
+    font-weight: #{$font-normal} !important;
+}
+
+.font-medium {
+    font-weight: #{$font-medium} !important;
+}
+
+.font-semibold {
+    font-weight: #{$font-semibold} !important;
+}
+
+.font-bold {
+    font-weight: #{$font-bold} !important;
+}
+
+// Spacing utilities (generate for available spacing values)
+$spacing-values: (
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    10,
+    12,
+    16,
+    20,
+    24
+);
+
+@each $value in $spacing-values {
+    .m-#{$value} {
+        margin: var(--spacing-#{$value}) !important;
+    }
+
+    .mt-#{$value} {
+        margin-top: var(--spacing-#{$value}) !important;
+    }
+
+    .mr-#{$value} {
+        margin-right: var(--spacing-#{$value}) !important;
+    }
+
+    .mb-#{$value} {
+        margin-bottom: var(--spacing-#{$value}) !important;
+    }
+
+    .ml-#{$value} {
+        margin-left: var(--spacing-#{$value}) !important;
+    }
+
+    .mx-#{$value} {
+        margin-left: var(--spacing-#{$value}) !important;
+        margin-right: var(--spacing-#{$value}) !important;
+    }
+
+    .my-#{$value} {
+        margin-top: var(--spacing-#{$value}) !important;
+        margin-bottom: var(--spacing-#{$value}) !important;
+    }
+
+    .p-#{$value} {
+        padding: var(--spacing-#{$value}) !important;
+    }
+
+    .pt-#{$value} {
+        padding-top: var(--spacing-#{$value}) !important;
+    }
+
+    .pr-#{$value} {
+        padding-right: var(--spacing-#{$value}) !important;
+    }
+
+    .pb-#{$value} {
+        padding-bottom: var(--spacing-#{$value}) !important;
+    }
+
+    .pl-#{$value} {
+        padding-left: var(--spacing-#{$value}) !important;
+    }
+
+    .px-#{$value} {
+        padding-left: var(--spacing-#{$value}) !important;
+        padding-right: var(--spacing-#{$value}) !important;
+    }
+
+    .py-#{$value} {
+        padding-top: var(--spacing-#{$value}) !important;
+        padding-bottom: var(--spacing-#{$value}) !important;
+    }
+}
+
+// Border radius utilities
+.rounded-none {
+    border-radius: var(--radius-none) !important;
+}
+
+.rounded-sm {
+    border-radius: var(--radius-sm) !important;
+}
+
+.rounded {
+    border-radius: var(--radius-base) !important;
+}
+
+.rounded-md {
+    border-radius: var(--radius-md) !important;
+}
+
+.rounded-lg {
+    border-radius: var(--radius-lg) !important;
+}
+
+.rounded-xl {
+    border-radius: var(--radius-xl) !important;
+}
+
+.rounded-2xl {
+    border-radius: var(--radius-2xl) !important;
+}
+
+.rounded-3xl {
+    border-radius: var(--radius-3xl) !important;
+}
+
+.rounded-full {
+    border-radius: var(--radius-full) !important;
+}
+
+// Shadow utilities
+.shadow-sm {
+    box-shadow: theme-color('shadow-sm') !important;
+}
+
+.shadow {
+    box-shadow: theme-color('shadow-base') !important;
+}
+
+.shadow-md {
+    box-shadow: theme-color('shadow-md') !important;
+}
+
+.shadow-lg {
+    box-shadow: theme-color('shadow-lg') !important;
+}
+
+.shadow-xl {
+    box-shadow: theme-color('shadow-xl') !important;
+}
+
+.shadow-none {
+    box-shadow: none !important;
+}
+
+// -----------------------------------------------------------------------------
+// Print Styles
+// -----------------------------------------------------------------------------
+@media print {
+
+    *,
+    *::before,
+    *::after {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    abbr[title]::after {
+        content: " (" attr(title) ")";
+    }
+
+    pre {
+        white-space: pre-wrap !important;
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
