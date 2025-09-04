@@ -15,12 +15,12 @@
 // Get brand color function
 @function brand-color($color) {
   $brand-colors: (
-    'navy': $mark-navy,
-    'cyan': $mark-cyan,
-    'green': $mark-green,
-    'orange': $mark-orange,
-    'white': $mark-white,
-    'indigo': $mark-indigo,
+    'navy': $erp-navy,
+    'cyan': $erp-cyan,
+    'green': $erp-green,
+    'orange': $erp-orange,
+    'white': $erp-white,
+    'indigo': $erp-indigo,
   );
   
   @return map-get($brand-colors, $color);

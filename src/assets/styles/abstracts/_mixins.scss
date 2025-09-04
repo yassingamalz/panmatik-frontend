@@ -150,7 +150,7 @@
 // Button style variants
 @mixin button-primary {
     background-color: $primary;
-    color: $mark-white;
+    color: $erp-white;
 
     &:hover:not(:disabled) {
         background-color: $primary-dark;
@@ -165,7 +165,7 @@
 
 @mixin button-secondary {
     background-color: $secondary;
-    color: $mark-white;
+    color: $erp-white;
 
     &:hover:not(:disabled) {
         background-color: $secondary-dark;

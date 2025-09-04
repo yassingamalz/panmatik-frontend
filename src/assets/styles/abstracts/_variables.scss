@@ -9,44 +9,44 @@
 // -----------------------------------------------------------------------------
 // PANMATIK Color Palette (Primary Brand Colors)
 // -----------------------------------------------------------------------------
-$mark-navy: #002046;
-$mark-cyan: #00ACCB;
-$mark-green: #67E470;
-$mark-orange: #FDA900;
-$mark-white: #FFFFFF;
-$mark-indigo: #6366f1;
+$erp-navy: #002046;
+$erp-cyan: #00ACCB;
+$erp-green: #67E470;
+$erp-orange: #FDA900;
+$erp-white: #FFFFFF;
+$erp-indigo: #6366f1;
 
 // -----------------------------------------------------------------------------
 // Extended Color Palette
 // -----------------------------------------------------------------------------
-$primary: $mark-navy;
-$primary-light: color.adjust($mark-navy, $lightness: 10%);
-$primary-dark: color.adjust($mark-navy, $lightness: -5%);
+$primary: $erp-navy;
+$primary-light: color.adjust($erp-navy, $lightness: 10%);
+$primary-dark: color.adjust($erp-navy, $lightness: -5%);
 
-$secondary: $mark-cyan;
-$secondary-light: color.adjust($mark-cyan, $lightness: 15%);
-$secondary-dark: color.adjust($mark-cyan, $lightness: -10%);
+$secondary: $erp-cyan;
+$secondary-light: color.adjust($erp-cyan, $lightness: 15%);
+$secondary-dark: color.adjust($erp-cyan, $lightness: -10%);
 
-$accent: $mark-indigo;
-$accent-light: color.adjust($mark-indigo, $lightness: 15%);
-$accent-dark: color.adjust($mark-indigo, $lightness: -10%);
+$accent: $erp-indigo;
+$accent-light: color.adjust($erp-indigo, $lightness: 15%);
+$accent-dark: color.adjust($erp-indigo, $lightness: -10%);
 
 // Semantic Colors
-$success: $mark-green;
-$success-light: color.adjust($mark-green, $lightness: 10%);
-$success-dark: color.adjust($mark-green, $lightness: -15%);
+$success: $erp-green;
+$success-light: color.adjust($erp-green, $lightness: 10%);
+$success-dark: color.adjust($erp-green, $lightness: -15%);
 
-$warning: $mark-orange;
-$warning-light: color.adjust($mark-orange, $lightness: 10%);
-$warning-dark: color.adjust($mark-orange, $lightness: -15%);
+$warning: $erp-orange;
+$warning-light: color.adjust($erp-orange, $lightness: 10%);
+$warning-dark: color.adjust($erp-orange, $lightness: -15%);
 
 $error: #ef4444;
 $error-light: color.adjust($error, $lightness: 10%);
 $error-dark: color.adjust($error, $lightness: -10%);
 
-$info: $mark-cyan;
-$info-light: color.adjust($mark-cyan, $lightness: 20%);
-$info-dark: color.adjust($mark-cyan, $lightness: -15%);
+$info: $erp-cyan;
+$info-light: color.adjust($erp-cyan, $lightness: 20%);
+$info-dark: color.adjust($erp-cyan, $lightness: -15%);
 
 // -----------------------------------------------------------------------------
 // Neutral Grays
@@ -71,7 +71,7 @@ $status-online: $success;
 $status-offline: $gray-500;
 $status-error: $error;
 $status-warning: $warning;
-$status-maintenance: $mark-orange;
+$status-maintenance: $erp-orange;
 
 // Process Control Colors
 $process-running: $success;
@@ -87,14 +87,14 @@ $quality-poor: $error;
 
 // Alert Levels
 $alert-critical: $error;
-$alert-high: $mark-orange;
+$alert-high: $erp-orange;
 $alert-medium: $warning;
 $alert-low: $info;
-$alert-info: $mark-cyan;
+$alert-info: $erp-cyan;
 
 // Data Visualization Colors
-$chart-primary: $mark-cyan;
-$chart-secondary: $mark-indigo;
+$chart-primary: $erp-cyan;
+$chart-secondary: $erp-indigo;
 $chart-tertiary: $success;
 $chart-quaternary: $warning;
 $chart-quinary: $error;

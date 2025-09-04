@@ -125,7 +125,7 @@
 
     &.btn-loading::after {
         border-color: transparent;
-        border-top-color: $mark-white;
+        border-top-color: $erp-white;
     }
 }
 
@@ -135,14 +135,14 @@
 
     &.btn-loading::after {
         border-color: transparent;
-        border-top-color: $mark-white;
+        border-top-color: $erp-white;
     }
 }
 
 // Accent button
 .btn-accent {
     background-color: $accent;
-    color: $mark-white;
+    color: $erp-white;
 
     &:hover:not(:disabled) {
         background-color: $accent-dark;
@@ -156,14 +156,14 @@
 
     &.btn-loading::after {
         border-color: transparent;
-        border-top-color: $mark-white;
+        border-top-color: $erp-white;
     }
 }
 
 // Success button
 .btn-success {
     background-color: $success;
-    color: $mark-white;
+    color: $erp-white;
 
     &:hover:not(:disabled) {
         background-color: $success-dark;
@@ -177,7 +177,7 @@
 
     &.btn-loading::after {
         border-color: transparent;
-        border-top-color: $mark-white;
+        border-top-color: $erp-white;
     }
 }
 
@@ -205,7 +205,7 @@
 // Error/Danger button
 .btn-error {
     background-color: $error;
-    color: $mark-white;
+    color: $erp-white;
 
     &:hover:not(:disabled) {
         background-color: $error-dark;
@@ -219,14 +219,14 @@
 
     &.btn-loading::after {
         border-color: transparent;
-        border-top-color: $mark-white;
+        border-top-color: $erp-white;
     }
 }
 
 // Info button
 .btn-info {
     background-color: $info;
-    color: $mark-white;
+    color: $erp-white;
 
     &:hover:not(:disabled) {
         background-color: $info-dark;
@@ -240,7 +240,7 @@
 
     &.btn-loading::after {
         border-color: transparent;
-        border-top-color: $mark-white;
+        border-top-color: $erp-white;
     }
 }
 
@@ -263,7 +263,7 @@
 
     &:hover:not(:disabled) {
         background-color: $primary;
-        color: $mark-white;
+        color: $erp-white;
     }
 
     &.btn-loading::after {
@@ -279,7 +279,7 @@
 
     &:hover:not(:disabled) {
         background-color: $secondary;
-        color: $mark-white;
+        color: $erp-white;
     }
 
     &.btn-loading::after {
@@ -295,7 +295,7 @@
 
     &:hover:not(:disabled) {
         background-color: $success;
-        color: $mark-white;
+        color: $erp-white;
     }
 
     &.btn-loading::after {
@@ -327,7 +327,7 @@
 
     &:hover:not(:disabled) {
         background-color: $error;
-        color: $mark-white;
+        color: $erp-white;
     }
 
     &.btn-loading::after {
@@ -488,7 +488,7 @@
 
     &.btn-loading::after {
         border-color: transparent;
-        border-top-color: $mark-white;
+        border-top-color: $erp-white;
     }
 }
 
@@ -502,7 +502,7 @@
 
     &.btn-loading::after {
         border-color: transparent;
-        border-top-color: $mark-white;
+        border-top-color: $erp-white;
     }
 }
 
@@ -683,7 +683,7 @@
 .btn-toggle {
     &[aria-pressed="true"] {
         background-color: var(--color-primary);
-        color: $mark-white;
+        color: $erp-white;
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 }

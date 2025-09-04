@@ -8,15 +8,15 @@
 // -----------------------------------------------------------------------------
 $light-theme: (
   // Backgrounds
-  bg-primary: $mark-white,
+  bg-primary: $erp-white,
   bg-secondary: $gray-50,
   bg-tertiary: $gray-100,
-  bg-elevated: $mark-white,
+  bg-elevated: $erp-white,
   bg-overlay: rgba(255, 255, 255, 0.95),
   
   // Surfaces
-  surface: $mark-white,
-  surface-elevated: $mark-white,
+  surface: $erp-white,
+  surface-elevated: $erp-white,
   surface-hover: $gray-50,
   surface-pressed: $gray-100,
   surface-disabled: $gray-100,
@@ -26,23 +26,23 @@ $light-theme: (
   text-secondary: $gray-700,
   text-tertiary: $gray-500,
   text-disabled: $gray-400,
-  text-inverse: $mark-white,
-  text-on-primary: $mark-white,
-  text-on-secondary: $mark-white,
-  text-on-accent: $mark-white,
+  text-inverse: $erp-white,
+  text-on-primary: $erp-white,
+  text-on-secondary: $erp-white,
+  text-on-accent: $erp-white,
   
   // Borders
   border-primary: $gray-200,
   border-secondary: $gray-300,
-  border-focus: $mark-cyan,
+  border-focus: $erp-cyan,
   border-error: $error,
   border-success: $success,
   border-warning: $warning,
   
   // Interactive States
-  interactive-hover: rgba($mark-cyan, 0.1),
-  interactive-pressed: rgba($mark-cyan, 0.2),
-  interactive-focus: rgba($mark-cyan, 0.15),
+  interactive-hover: rgba($erp-cyan, 0.1),
+  interactive-pressed: rgba($erp-cyan, 0.2),
+  interactive-focus: rgba($erp-cyan, 0.15),
   interactive-disabled: $gray-100,
   
   // Shadows
@@ -77,22 +77,22 @@ $dark-theme: (
   text-tertiary: $gray-400,
   text-disabled: $gray-600,
   text-inverse: $gray-900,
-  text-on-primary: $mark-white,
-  text-on-secondary: $mark-white,
-  text-on-accent: $mark-white,
+  text-on-primary: $erp-white,
+  text-on-secondary: $erp-white,
+  text-on-accent: $erp-white,
   
   // Borders
   border-primary: $gray-700,
   border-secondary: $gray-600,
-  border-focus: $mark-cyan,
+  border-focus: $erp-cyan,
   border-error: $error,
   border-success: $success,
   border-warning: $warning,
   
   // Interactive States
-  interactive-hover: rgba($mark-cyan, 0.15),
-  interactive-pressed: rgba($mark-cyan, 0.25),
-  interactive-focus: rgba($mark-cyan, 0.2),
+  interactive-hover: rgba($erp-cyan, 0.15),
+  interactive-pressed: rgba($erp-cyan, 0.25),
+  interactive-focus: rgba($erp-cyan, 0.2),
   interactive-disabled: $gray-800,
   
   // Shadows
