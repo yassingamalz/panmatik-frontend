@@ -1,0 +1,141 @@
+<aside class="sidebar" [class.sidebar--collapsed]="isCollapsed()">
+    <!-- Geometric Background -->
+    <div class="sidebar__background">
+        <svg class="sidebar__geometric" viewBox="0 0 280 800" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="sidebarGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00ACCB" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#6366f1" stop-opacity="0.05" />
+                </linearGradient>
+                <linearGradient id="sidebarGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#67E470" stop-opacity="0.08" />
+                    <stop offset="100%" stop-color="#FDA900" stop-opacity="0.05" />
+                </linearGradient>
+            </defs>
+            <polygon points="0,0 120,60 0,120" fill="url(#sidebarGrad1)" />
+            <polygon points="280,200 160,260 280,320" fill="url(#sidebarGrad1)" />
+            <polygon points="80,400 200,340 120,500" fill="url(#sidebarGrad2)" />
+            <circle cx="220" cy="80" r="25" fill="url(#sidebarGrad2)" />
+            <circle cx="60" cy="300" r="20" fill="url(#sidebarGrad1)" />
+            <polygon points="0,600 140,640 0,720" fill="url(#sidebarGrad1)" />
+        </svg>
+    </div>
+
+    <!-- Sidebar Header -->
+    <header class="sidebar__header">
+        <div class="sidebar__brand">
+            <div class="sidebar__logo">
+                <i class="bi bi-layers text-white"></i>
+            </div>
+            <div class="sidebar__brand-text" *ngIf="!isCollapsed()">
+                <h2 class="sidebar__title">PANMATIK</h2>
+                <span class="sidebar__subtitle">Industrial ERP</span>
+            </div>
+        </div>
+
+        <button class="sidebar__toggle" (click)="toggleSidebar()" type="button">
+            <i [class]="isCollapsed() ? 'bi bi-chevron-right' : 'bi bi-chevron-left'"></i>
+        </button>
+    </header>
+
+    <!-- System Status -->
+    <div class="sidebar__status" *ngIf="!isCollapsed()">
+        <div class="status-card">
+            <div class="status-card__header">
+                <h3 class="status-card__title">System Status</h3>
+                <div class="status-card__indicator status-card__indicator--online"></div>
+            </div>
+
+            <div class="status-metrics">
+                <div class="metric">
+                    <div class="metric__value">{{ systemStatus().machinesOnline }}/{{ systemStatus().totalMachines }}
+                    </div>
+                    <div class="metric__label">Machines Online</div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric__value">{{ systemStatus().activeProcesses }}</div>
+                    <div class="metric__label">Active Processes</div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric__value metric__value--{{ getEfficiencyStatus() }}">{{ systemStatus().efficiency
+                        }}%</div>
+                    <div class="metric__label">Efficiency</div>
+                </div>
+            </div>
+
+            <!-- Efficiency Progress Bar -->
+            <div class="efficiency-bar">
+                <div class="efficiency-bar__track">
+                    <div class="efficiency-bar__fill efficiency-bar__fill--{{ getEfficiencyStatus() }}"
+                        [style.width.%]="systemStatus().efficiency">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar__nav">
+        <div class="nav-section">
+            <h4 class="nav-section__title" *ngIf="!isCollapsed()">MAIN NAVIGATION</h4>
+
+            <ul class="nav-list">
+                <li class="nav-item" *ngFor="let item of navigationItems"
+                    [class.nav-item--active]="isActiveRoute(item.route)" [class.nav-item--has-children]="item.children">
+
+                    <button class="nav-item__button" (click)="toggleSection(item)"
+                        [class.nav-item__button--active]="isActiveRoute(item.route)" type="button">
+
+                        <div class="nav-item__icon">
+                            <i [class]="item.icon"></i>
+                        </div>
+
+                        <span class="nav-item__label" *ngIf="!isCollapsed()">{{ item.label }}</span>
+
+                        <div class="nav-item__badge" *ngIf="item.badge && !isCollapsed()">
+                            {{ item.badge }}
+                        </div>
+
+                        <div class="nav-item__chevron" *ngIf="item.children && !isCollapsed()"
+                            [class.nav-item__chevron--expanded]="item.isExpanded">
+                            <i class="bi bi-chevron-right"></i>
+                        </div>
+                    </button>
+
+                    <!-- Sub Navigation -->
+                    <ul class="nav-submenu" *ngIf="item.children && item.isExpanded && !isCollapsed()">
+                        <li class="nav-submenu__item" *ngFor="let child of item.children">
+                            <a class="nav-submenu__link" [routerLink]="child.route"
+                                [class.nav-submenu__link--active]="isActiveRoute(child.route)">
+                                <i [class]="child.icon" class="nav-submenu__icon"></i>
+                                {{ child.label }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- User Section -->
+    <div class="sidebar__user">
+        <div class="user-profile">
+            <div class="user-profile__avatar">
+                <div class="avatar">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+            </div>
+
+            <div class="user-profile__info" *ngIf="!isCollapsed()">
+                <div class="user-profile__name">Plant Manager</div>
+                <div class="user-profile__role">System Administrator</div>
+            </div>
+
+            <button class="user-profile__menu" *ngIf="!isCollapsed()" type="button">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+        </div>
+    </div>
+</aside>

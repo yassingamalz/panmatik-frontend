@@ -1,0 +1,540 @@
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/themes';
+
+// =============================================================================
+// PANMATIK Sidebar Component - Geometric Clean Style
+// =============================================================================
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: $sidebar-width;
+    background: theme-color('surface');
+    border-right: 1px solid theme-color('border-primary');
+    display: flex;
+    flex-direction: column;
+    transition: width $transition-slow $ease-in-out;
+    z-index: $z-fixed;
+    overflow: hidden;
+
+    &--collapsed {
+        width: $sidebar-width-collapsed;
+    }
+}
+
+// Background & Geometric Elements
+.sidebar__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.sidebar__geometric {
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    animation: geometricFloat 30s ease-in-out infinite;
+}
+
+@keyframes geometricFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(-0.5deg);
+    }
+
+    75% {
+        transform: translateY(-15px) rotate(0.8deg);
+    }
+}
+
+// Header Section
+.sidebar__header {
+    position: relative;
+    z-index: 2;
+    padding: $spacing-6 $spacing-4;
+    border-bottom: 1px solid theme-color('border-secondary');
+    background: rgba(theme-color('surface'), 0.95);
+    backdrop-filter: blur(8px);
+    @include flex-between;
+    align-items: center;
+    min-height: $header-height;
+}
+
+.sidebar__brand {
+    @include flex-start;
+    align-items: center;
+    gap: $spacing-3;
+    flex: 1;
+}
+
+.sidebar__logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, $mark-cyan, $mark-indigo);
+    border-radius: $radius-lg;
+    @include flex-center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba($mark-cyan, 0.2);
+}
+
+.sidebar__brand-text {
+    overflow: hidden;
+}
+
+.sidebar__title {
+    font-size: $text-lg;
+    font-weight: $font-bold;
+    color: theme-color('text-primary');
+    margin: 0;
+    line-height: $leading-tight;
+}
+
+.sidebar__subtitle {
+    font-size: $text-xs;
+    color: theme-color('text-tertiary');
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: $font-medium;
+}
+
+.sidebar__toggle {
+    @include button-base;
+    width: 32px;
+    height: 32px;
+    @include flex-center;
+    background: theme-color('bg-secondary');
+    border: 1px solid theme-color('border-primary');
+    border-radius: $radius-md;
+    color: theme-color('text-secondary');
+    transition: all $transition-base;
+    flex-shrink: 0;
+
+    &:hover {
+        background: theme-color('interactive-hover');
+        color: theme-color('text-primary');
+        border-color: theme-color('border-focus');
+    }
+}
+
+// System Status Section
+.sidebar__status {
+    position: relative;
+    z-index: 2;
+    padding: $spacing-4;
+    background: rgba(theme-color('surface'), 0.95);
+    backdrop-filter: blur(8px);
+}
+
+.status-card {
+    @include card($card-padding-sm);
+    background: linear-gradient(135deg,
+            rgba($mark-navy, 0.05) 0%,
+            rgba($mark-cyan, 0.03) 100%);
+    border: 1px solid rgba($mark-cyan, 0.1);
+}
+
+.status-card__header {
+    @include flex-between;
+    align-items: center;
+    margin-bottom: $spacing-3;
+}
+
+.status-card__title {
+    font-size: $text-sm;
+    font-weight: $font-semibold;
+    color: theme-color('text-primary');
+    margin: 0;
+}
+
+.status-card__indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: $radius-full;
+
+    &--online {
+        background: $status-online;
+        box-shadow: 0 0 8px rgba($status-online, 0.4);
+        animation: pulse 2s infinite;
+    }
+}
+
+.status-metrics {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-2;
+    margin-bottom: $spacing-3;
+}
+
+.metric {
+    text-align: center;
+}
+
+.metric__value {
+    font-size: $text-lg;
+    font-weight: $font-bold;
+    color: theme-color('text-primary');
+
+    &--excellent {
+        color: $status-online;
+    }
+
+    &--good {
+        color: $mark-green;
+    }
+
+    &--warning {
+        color: $warning;
+    }
+
+    &--critical {
+        color: $error;
+    }
+}
+
+.metric__label {
+    font-size: $text-xs;
+    color: theme-color('text-tertiary');
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: $spacing-1;
+}
+
+.efficiency-bar {
+    margin-top: $spacing-3;
+}
+
+.efficiency-bar__track {
+    width: 100%;
+    height: 4px;
+    background: theme-color('bg-tertiary');
+    border-radius: $radius-full;
+    overflow: hidden;
+}
+
+.efficiency-bar__fill {
+    height: 100%;
+    border-radius: $radius-full;
+    transition: width $transition-slow ease-out;
+
+    &--excellent {
+        background: linear-gradient(90deg, $status-online, $mark-green);
+    }
+
+    &--good {
+        background: linear-gradient(90deg, $mark-green, $mark-cyan);
+    }
+
+    &--warning {
+        background: linear-gradient(90deg, $warning, $mark-orange);
+    }
+
+    &--critical {
+        background: linear-gradient(90deg, $error, $mark-orange);
+    }
+}
+
+// Navigation Section
+.sidebar__nav {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: $spacing-4 0;
+    background: rgba(theme-color('surface'), 0.95);
+    backdrop-filter: blur(8px);
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: theme-color('border-primary');
+        border-radius: $radius-full;
+    }
+}
+
+.nav-section {
+    padding: 0 $spacing-4;
+}
+
+.nav-section__title {
+    font-size: $text-xs;
+    font-weight: $font-semibold;
+    color: theme-color('text-tertiary');
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 $spacing-3 0;
+    padding: 0 $spacing-2;
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin-bottom: $spacing-1;
+
+    &--active {
+        .nav-item__button {
+            background: linear-gradient(135deg,
+                    rgba($mark-cyan, 0.1) 0%,
+                    rgba($mark-indigo, 0.05) 100%);
+            color: $mark-cyan;
+            border-color: rgba($mark-cyan, 0.2);
+        }
+    }
+}
+
+.nav-item__button {
+    @include button-base;
+    width: 100%;
+    @include flex-start;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-3;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: $radius-lg;
+    color: theme-color('text-secondary');
+    transition: all $transition-base;
+    text-align: left;
+
+    &:hover {
+        background: theme-color('interactive-hover');
+        color: theme-color('text-primary');
+        border-color: theme-color('border-secondary');
+    }
+
+    &--active {
+        background: linear-gradient(135deg,
+                rgba($mark-cyan, 0.1) 0%,
+                rgba($mark-indigo, 0.05) 100%);
+        color: $mark-cyan;
+        border-color: rgba($mark-cyan, 0.2);
+    }
+}
+
+.nav-item__icon {
+    width: 20px;
+    height: 20px;
+    @include flex-center;
+    flex-shrink: 0;
+}
+
+.nav-item__label {
+    flex: 1;
+    font-weight: $font-medium;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-item__badge {
+    background: $error;
+    color: $mark-white;
+    font-size: $text-xs;
+    font-weight: $font-bold;
+    padding: 2px 6px;
+    border-radius: $radius-full;
+    min-width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.nav-item__chevron {
+    width: 16px;
+    height: 16px;
+    @include flex-center;
+    transition: transform $transition-base;
+    flex-shrink: 0;
+
+    &--expanded {
+        transform: rotate(90deg);
+    }
+}
+
+// Sub Navigation
+.nav-submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: $spacing-2;
+    margin-left: calc(20px + #{$spacing-3});
+    border-left: 1px solid theme-color('border-secondary');
+}
+
+.nav-submenu__item {
+    margin-bottom: $spacing-1;
+}
+
+.nav-submenu__link {
+    display: block;
+    padding: $spacing-2 $spacing-3;
+    color: theme-color('text-tertiary');
+    text-decoration: none;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    border-radius: $radius-md;
+    transition: all $transition-base;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: -1px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 0;
+        background: $mark-cyan;
+        transition: height $transition-base;
+    }
+
+    &:hover {
+        background: theme-color('interactive-hover');
+        color: theme-color('text-primary');
+
+        &::before {
+            height: 100%;
+        }
+    }
+
+    &--active {
+        background: rgba($mark-cyan, 0.08);
+        color: $mark-cyan;
+
+        &::before {
+            height: 100%;
+        }
+    }
+}
+
+// User Section
+.sidebar__user {
+    position: relative;
+    z-index: 2;
+    padding: $spacing-4;
+    border-top: 1px solid theme-color('border-secondary');
+    background: rgba(theme-color('surface'), 0.95);
+    backdrop-filter: blur(8px);
+}
+
+.user-profile {
+    @include flex-start;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-3;
+    border-radius: $radius-lg;
+    transition: background $transition-base;
+
+    &:hover {
+        background: theme-color('interactive-hover');
+    }
+}
+
+.user-profile__avatar {
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, $mark-indigo, $mark-cyan);
+    border-radius: $radius-full;
+    @include flex-center;
+    color: $mark-white;
+}
+
+.user-profile__info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.user-profile__name {
+    font-size: $text-sm;
+    font-weight: $font-semibold;
+    color: theme-color('text-primary');
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-profile__role {
+    font-size: $text-xs;
+    color: theme-color('text-tertiary');
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-profile__menu {
+    @include button-base;
+    width: 24px;
+    height: 24px;
+    @include flex-center;
+    background: transparent;
+    border: none;
+    color: theme-color('text-tertiary');
+    border-radius: $radius-md;
+    transition: all $transition-base;
+    flex-shrink: 0;
+
+    i {
+        font-size: 14px;
+    }
+
+    &:hover {
+        background: theme-color('bg-secondary');
+        color: theme-color('text-primary');
+    }
+}
+
+// Responsive Design
+@include mobile-only {
+    .sidebar {
+        transform: translateX(-100%);
+
+        &.sidebar--open {
+            transform: translateX(0);
+        }
+    }
+}
+
+// Collapsed State Adjustments
+.sidebar--collapsed {
+    .status-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-item__button {
+        justify-content: center;
+    }
+
+    .user-profile {
+        justify-content: center;
+    }
+}

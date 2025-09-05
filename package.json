@@ -50,6 +50,7 @@
     "@types/moment": "^2.11.29",
     "@types/socket.io-client": "^1.4.36",
     "@types/xlsx": "^0.0.35",
+    "bootstrap-icons": "^1.13.1",
     "chart.js": "^4.5.0",
     "file-saver": "^2.0.5",
     "jwt-decode": "^4.0.0",
