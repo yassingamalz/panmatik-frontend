@@ -1,1 +1,18 @@
-<p>admin-layout works!</p>
+<!-- src/app/layout/admin-layout/admin-layout.html -->
+<div class="admin-layout">
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Header (if needed) -->
+        <header class="main-header">
+            <!-- You can add a header component here later -->
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

@@ -1,8 +1,9 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NavigationItem } from '../../core/models/navigation-item';
 import { SystemStatus } from '../../core/models/system-status';
+import { NavigationItem } from '../../core/models/navigation-item';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -89,7 +90,37 @@ export class SidebarComponent implements OnInit {
     }
   ];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
+
+  // Computed property for filtered navigation based on user role
+  filteredNavigationItems = computed(() => {
+    const currentUser = this.authService.getCurrentUser();
+    if (!currentUser) return [];
+
+    return this.navigationItems.filter(item => this.hasAccess(item, currentUser.role));
+  });
+
+  private hasAccess(item: NavigationItem, userRole: string): boolean {
+    // Admin can see everything
+    if (userRole === 'admin') return true;
+
+    // Hide admin-only sections from non-admin users
+    if (item.id === 'admin') return false;
+
+    // Operators can see most operational items
+    if (userRole === 'operator') {
+      const restrictedItems = ['security']; // Example: operators can't see security section
+      return !restrictedItems.includes(item.id);
+    }
+
+    // Viewers have limited access
+    if (userRole === 'viewer') {
+      const allowedItems = ['dashboard', 'analytics', 'quality'];
+      return allowedItems.includes(item.id);
+    }
+
+    return false;
+  }
 
   ngOnInit(): void {
     this.updateActiveRoute();

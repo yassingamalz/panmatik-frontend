@@ -1,7 +1,7 @@
-@import 'abstracts/variables';
-@import 'abstracts/functions';
-@import 'abstracts/mixins';
-@import 'abstracts/themes';
+@import '../../../assets/styles/abstracts/variables';
+@import '../../../assets/styles/abstracts/functions';
+@import '../../../assets/styles/abstracts/mixins';
+@import '../../../assets/styles/abstracts/themes';
 
 // =============================================================================
 // PANMATIK Sidebar Component - Geometric Clean Style
@@ -87,11 +87,11 @@
 .sidebar__logo {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, $mark-cyan, $mark-indigo);
+    background: linear-gradient(135deg, $erp-cyan, $erp-indigo);
     border-radius: $radius-lg;
     @include flex-center;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba($mark-cyan, 0.2);
+    box-shadow: 0 4px 12px rgba($erp-cyan, 0.2);
 }
 
 .sidebar__brand-text {
@@ -145,9 +145,9 @@
 .status-card {
     @include card($card-padding-sm);
     background: linear-gradient(135deg,
-            rgba($mark-navy, 0.05) 0%,
-            rgba($mark-cyan, 0.03) 100%);
-    border: 1px solid rgba($mark-cyan, 0.1);
+            rgba($erp-navy, 0.05) 0%,
+            rgba($erp-cyan, 0.03) 100%);
+    border: 1px solid rgba($erp-cyan, 0.1);
 }
 
 .status-card__header {
@@ -196,7 +196,7 @@
     }
 
     &--good {
-        color: $mark-green;
+        color: $erp-green;
     }
 
     &--warning {
@@ -234,19 +234,19 @@
     transition: width $transition-slow ease-out;
 
     &--excellent {
-        background: linear-gradient(90deg, $status-online, $mark-green);
+        background: linear-gradient(90deg, $status-online, $erp-green);
     }
 
     &--good {
-        background: linear-gradient(90deg, $mark-green, $mark-cyan);
+        background: linear-gradient(90deg, $erp-green, $erp-cyan);
     }
 
     &--warning {
-        background: linear-gradient(90deg, $warning, $mark-orange);
+        background: linear-gradient(90deg, $warning, $erp-orange);
     }
 
     &--critical {
-        background: linear-gradient(90deg, $error, $mark-orange);
+        background: linear-gradient(90deg, $error, $erp-orange);
     }
 }
 
@@ -301,10 +301,10 @@
     &--active {
         .nav-item__button {
             background: linear-gradient(135deg,
-                    rgba($mark-cyan, 0.1) 0%,
-                    rgba($mark-indigo, 0.05) 100%);
-            color: $mark-cyan;
-            border-color: rgba($mark-cyan, 0.2);
+                    rgba($erp-cyan, 0.1) 0%,
+                    rgba($erp-indigo, 0.05) 100%);
+            color: $erp-cyan;
+            border-color: rgba($erp-cyan, 0.2);
         }
     }
 }
@@ -331,10 +331,10 @@
 
     &--active {
         background: linear-gradient(135deg,
-                rgba($mark-cyan, 0.1) 0%,
-                rgba($mark-indigo, 0.05) 100%);
-        color: $mark-cyan;
-        border-color: rgba($mark-cyan, 0.2);
+                rgba($erp-cyan, 0.1) 0%,
+                rgba($erp-indigo, 0.05) 100%);
+        color: $erp-cyan;
+        border-color: rgba($erp-cyan, 0.2);
     }
 }
 
@@ -355,7 +355,7 @@
 
 .nav-item__badge {
     background: $error;
-    color: $mark-white;
+    color: $erp-white;
     font-size: $text-xs;
     font-weight: $font-bold;
     padding: 2px 6px;
@@ -410,7 +410,7 @@
         transform: translateY(-50%);
         width: 1px;
         height: 0;
-        background: $mark-cyan;
+        background: $erp-cyan;
         transition: height $transition-base;
     }
 
@@ -424,8 +424,8 @@
     }
 
     &--active {
-        background: rgba($mark-cyan, 0.08);
-        color: $mark-cyan;
+        background: rgba($erp-cyan, 0.08);
+        color: $erp-cyan;
 
         &::before {
             height: 100%;
@@ -463,10 +463,10 @@
 .avatar {
     width: 36px;
     height: 36px;
-    background: linear-gradient(135deg, $mark-indigo, $mark-cyan);
+    background: linear-gradient(135deg, $erp-indigo, $erp-cyan);
     border-radius: $radius-full;
     @include flex-center;
-    color: $mark-white;
+    color: $erp-white;
 }
 
 .user-profile__info {

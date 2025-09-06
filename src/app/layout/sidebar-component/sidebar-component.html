@@ -82,7 +82,7 @@
             <h4 class="nav-section__title" *ngIf="!isCollapsed()">MAIN NAVIGATION</h4>
 
             <ul class="nav-list">
-                <li class="nav-item" *ngFor="let item of navigationItems"
+                <li class="nav-item" *ngFor="let item of filteredNavigationItems()"
                     [class.nav-item--active]="isActiveRoute(item.route)" [class.nav-item--has-children]="item.children">
 
                     <button class="nav-item__button" (click)="toggleSection(item)"

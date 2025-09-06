@@ -1,0 +1,47 @@
+// src/app/layout/admin-layout/admin-layout.scss
+@import '../../../assets/styles/abstracts/variables';
+@import '../../../assets/styles/abstracts/functions';
+@import '../../../assets/styles/abstracts/mixins';
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: theme-color('bg-primary');
+}
+
+.main-content {
+    flex: 1;
+    margin-left: $sidebar-width;
+    transition: margin-left $transition-slow $ease-in-out;
+    overflow-x: hidden;
+
+    // When sidebar is collapsed
+    .sidebar--collapsed~& {
+        margin-left: $sidebar-width-collapsed;
+    }
+
+    @include mobile-only {
+        margin-left: 0;
+    }
+}
+
+.main-header {
+    height: $header-height;
+    background: theme-color('surface');
+    border-bottom: 1px solid theme-color('border-primary');
+    padding: 0 $spacing-6;
+    @include flex-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: $z-sticky;
+}
+
+.page-content {
+    padding: $spacing-6;
+    min-height: calc(100vh - #{$header-height});
+
+    @include mobile-only {
+        padding: $spacing-4;
+    }
+}
